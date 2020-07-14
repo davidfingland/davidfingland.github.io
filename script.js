@@ -39,6 +39,11 @@ function renderPlaces(places) {
        model.setAttribute('rotation', '0 180 0');
        model.setAttribute('animation-mixer', '');
        model.setAttribute('scale', '5 5 5');
+       model.setAttribute('position', '20,0,0');
+
+       //let soundscape = document.createElement(a-entity);
+       //soundscape.setAttribute('autoplay', 'true');
+       //soundscaoe.setAttribute('sound', '.assets/music/ice age.mp3')
 
        model.addEventListener('loaded', () => {
            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
