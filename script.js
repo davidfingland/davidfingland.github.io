@@ -56,7 +56,14 @@ function renderPlaces(places) {
     });
 
       
-       
+       //creating new creature
+       let model2 = document.createElement('a-entity');
+       model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+       model.setAttribute('gltf-model', './assets/mammoth/ColumbianMammoth.gltf');
+       model.setAttribute('rotation', '0 170 0');
+       model.setAttribute('animation-mixer', '');
+       model.setAttribute('scale', '5 5 5');
+       model.setAttribute('position', '20,0,0');
 
        //creating mammoth
        let model = document.createElement('a-entity');
