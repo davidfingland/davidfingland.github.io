@@ -1,6 +1,9 @@
 window.onload = () => {
     let places = staticLoadPlaces();
     renderPlaces(places);
+
+    const button = document.querySelector('button[data-action="play"]');
+    button.innerText = 'Play';
 };
 
 function staticLoadPlaces() {
@@ -25,6 +28,17 @@ function staticLoadPlaces() {
    ];
 }
 
+var soundscape = [
+    {
+        url: './assets/music/Ice Age.mp3',
+        position='0 0 0',
+        
+        
+    },
+]
+
+
+
 function renderPlaces(places) {
    let scene = document.querySelector('a-scene');
 
@@ -32,6 +46,19 @@ function renderPlaces(places) {
        let latitude = place.location.lat;
        let longitude = place.location.lng;
 
+       //creating soundscape
+       let soundscape = document.createElement('a-entity')
+       soundscape.setAttribute('position', '0 0 0');
+       soundscape.setAttribute('src', './assets/music/Ice Age.mp3');
+
+       document.querySelector('button[data-action="play"]').addEventListener('click', function () {
+        soundscape.playSound();
+    });
+
+      
+       
+
+       //creating mammoth
        let model = document.createElement('a-entity');
        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
        model.setAttribute('gltf-model', './assets/mammoth/ColumbianMammoth.gltf');
