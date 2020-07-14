@@ -1,6 +1,6 @@
 window.onload = () => {
-    const button = document.querySelector('button[data-action="change"]');
-    button.innerText = 'A';
+    const button = document.querySelector('button[data-action="play"]');
+    button.innerText = 'Ambient';
   
     let places = staticLoadPlaces();
     renderPlaces(places);
