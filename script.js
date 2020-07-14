@@ -14,7 +14,7 @@ function staticLoadPlaces() {
        },
 
        {
-        name: 'Mammoth',
+        name: 'Museum',
         location: {
             lat: 45.412748,
             lng: -75.688668,
