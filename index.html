@@ -10,22 +10,16 @@
     <script>
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     </script>
-    <link rel="stylesheet" type="text/css" href="./style.css"/>
 </head>
 
-<script src="./script.js"></script>
 <body style='margin: 0; overflow: hidden;'>
     <a-scene
-       vr-mode-ui="enabled: false"
+        vr-mode-ui="enabled: false"
 		embedded
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
-        <a-entity id="soundscape" geometry="primitive: box" material="color: blue"
-          position="0 0 -5" sound="src: (./assets/music/Ice Age.mp3); on: click""></a-entity>
-        <a-camera gps-camera rotation-reader>
-		</a-camera>
-  </a-scene>
-  
-  <div class="centered">
-    <button data-action="play"></button>
-</div>
+        
+        <a-camera gps-camera rotation-reader></a-camera>
+        <a-entity gltf-model="./assets/mammoth/ColumbianMammoth.gltf" rotation="0 180 0" scale="1 1 1" gps-entity-place="longitude: -75.693039; latitude: 45.412198;" animation-mixer/>
+        <a-entity gltf-model="./assets/mammoth/ColumbianMammoth.gltf" rotation="0 0 0" scale="20 20 20" gps-entity-place="longitude: -75.688668; latitude: 45.412748;" animation-mixer/>
+	</a-scene>
 </body>
