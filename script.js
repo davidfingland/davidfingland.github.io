@@ -12,6 +12,14 @@ function staticLoadPlaces() {
                lng: -75.693039,
            }
        },
+
+       {
+        name: 'Mammoth',
+        location: {
+            lat: 45.412748,
+            lng: -75.688668,
+        }
+    },
    ];
 }
 
@@ -27,7 +35,7 @@ function renderPlaces(places) {
        model.setAttribute('gltf-model', './assets/mammoth/ColumbianMammoth.gltf');
        model.setAttribute('rotation', '0 180 0');
        model.setAttribute('animation-mixer', '');
-       model.setAttribute('scale', '0.5 0.5 0.5');
+       model.setAttribute('scale', '10 10 10');
 
        model.addEventListener('loaded', () => {
            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
