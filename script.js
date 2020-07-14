@@ -28,16 +28,6 @@ function staticLoadPlaces() {
    ];
 }
 
-var soundscape = [
-    {
-        url: './assets/music/Ice Age.mp3',
-        position='0 0 0',
-        
-        
-    },
-]
-
-
 
 function renderPlaces(places) {
    let scene = document.querySelector('a-scene');
@@ -47,13 +37,13 @@ function renderPlaces(places) {
        let longitude = place.location.lng;
 
        //creating soundscape
-       let soundscape = document.createElement('a-entity')
-       soundscape.setAttribute('position', '0 0 0');
-       soundscape.setAttribute('src', './assets/music/Ice Age.mp3');
+       //let soundscape = document.createElement('a-entity')
+       //soundscape.setAttribute('position', '0 0 0');
+       //soundscape.setAttribute('src', './assets/music/Ice Age.mp3');
 
-       document.querySelector('button[data-action="play"]').addEventListener('click', function () {
-        soundscape.playSound();
-    });
+       //document.querySelector('button[data-action="play"]').addEventListener('click', function () {
+        //soundscape.playSound();
+    //});
 
       
        //creating new creature
