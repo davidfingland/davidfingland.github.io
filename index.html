@@ -21,17 +21,17 @@
         <a-camera gps-camera rotation-reader></a-camera>
         
         <a-entity id="groupmuseum" gps-entity-place="longitude: -75.688640; latitude: 45.41307;">
-            <a-entity id="bison2" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 30 0" scale="10 10 10" animation-mixer/></a-entity>
-            <a-entity id="bison3" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 20 0" scale="10 10 10" animation-mixer/></a-entity>
-            <a-entity id="saberanim" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 20000">
-                <a-entity id="saber" gltf-model="./assets/sabertooth/Sabertooth.gltf" position="50 0 0" scale="5 5 5" animation-mixer/></a-entity>
+            <a-entity id="bison2" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 30 0" scale="12 12 12" position="20 0 0" animation-mixer/></a-entity>
+            <a-entity id="bison3" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 -10 0" scale="12 12 12" position="-10 0 0" animation-mixer/></a-entity>
+            <a-entity id="saberanim" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 50000">
+                <a-entity id="saber" gltf-model="./assets/sabertooth/Sabertooth.gltf" position="120 0 0" scale="12 12 12" animation-mixer/></a-entity>
             </a-entity>
         </a-entity>
 
         <a-entity id="groupmammoth" gps-entity-place="longitude: -75.689763; latitude: 45.412706;">
             <a-entity id="mammoth2" gltf-model="./assets/cmammoth/ColumbianMammoth.gltf" rotation="0 10 0" scale="15 15 15" animation-mixer/></a-entity>
-            <a-entity id="mammoth3" gltf-model="./assets/cmammoth/ColumbianMammoth.gltf" rotation="0 30 0" scale="10 10 10" animation-mixer/></a-entity>
-            <a-entity id="mammoth4" gltf-model="./assets/cmammoth/ColumbianMammoth.gltf" rotation="0 50 0" scale="5 5 5" animation-mixer/></a-entity>
+            <a-entity id="mammoth3" gltf-model="./assets/cmammoth/ColumbianMammoth.gltf" rotation="0 30 0" scale="12 12 12" animation-mixer/></a-entity>
+            <a-entity id="mammoth4" gltf-model="./assets/cmammoth/ColumbianMammoth.gltf" rotation="0 50 0" scale="10 10 10" animation-mixer/></a-entity>
         </a-entity>
 
         <a-entity id="groupbirds" gps-entity-place="longitude: -75.689763; latitude: 45.412706;" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing:linear">
@@ -39,8 +39,6 @@
             <a-entity id="bird2" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 0 0" scale="15 15 15" position="30 30 0"animation-mixer/></a-entity>
             <a-entity id="bird3" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 180 0" scale="15 15 15" position="-20 40 0" animation-mixer/></a-entity>
         </a-entity>
-
-        <!--Animate Birds using code object 3d-->
         
     </a-scene>
     
