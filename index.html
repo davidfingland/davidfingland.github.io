@@ -23,7 +23,9 @@
         <a-entity id="groupmuseum" gps-entity-place="longitude: -75.688640; latitude: 45.41307;">
             <a-entity id="bison2" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 30 0" scale="10 10 10" animation-mixer/></a-entity>
             <a-entity id="bison3" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 20 0" scale="10 10 10" animation-mixer/></a-entity>
-            <a-entity id="sabre" gltf-model="./assets/sabertooth/Sabertooth.gltf" rotation="0 5 0" scale="5 5 5" animation-mixer/></a-entity>
+            <a-entity id="saberanim" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 20000">
+                <a-entity id="saber" gltf-model="./assets/sabertooth/Sabertooth.gltf" position="50 0 0" scale="5 5 5" animation-mixer/></a-entity>
+            </a-entity>
         </a-entity>
 
         <a-entity id="groupmammoth" gps-entity-place="longitude: -75.689763; latitude: 45.412706;">
@@ -44,6 +46,6 @@
     
 
     <div class="centered">
-        <p>Bah</p>
+        <p>Test</p>
     </div>
 </body>
