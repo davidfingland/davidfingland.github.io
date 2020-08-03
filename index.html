@@ -62,7 +62,7 @@
         ></a-text>
       </a-nft>-->
 
-      <a-entity id="temp-parent" position="0 -50 -220" rotation="0 180 0">
+      <a-entity id="temp-parent" position="0 -50 -220" rotation="0 180 0" gps-entity-place="latitude: 45.413070; longitude: -75.688911">
       
       <!-- a-nft is the anchor that defines an Image Tracking entity -->
       <!-- on 'url' use the path to the Image Descriptors created before. -->
@@ -101,7 +101,8 @@
       <!-- static camera that moves according to the device movemenents -->
       <!--<a-entity camera></a-entity>-->
 
-      <a-camera gps-camera rotation-reader simulate latitude="true" simulate longitude="true" simulate altitude="true"></a-camera>
+      <!--<a-camera gps-camera rotation-reader simulate latitude="true" simulate longitude="true" simulate altitude="true"></a-camera>-->
+      <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
 
     
