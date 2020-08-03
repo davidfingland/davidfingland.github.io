@@ -62,7 +62,7 @@
         ></a-text>
       </a-nft>-->
 
-      <a-entity id="temp-parent" gps-entity-place="latitude: 45.412115; longitude: -75.693051" position="0 0 -20">
+      <a-entity id="temp-parent" gps-projected-entity-place="latitude: 45.412115; longitude: -75.693051" position="0 -2 -20">
       
       <!-- a-nft is the anchor that defines an Image Tracking entity -->
       <!-- on 'url' use the path to the Image Descriptors created before. -->
@@ -98,14 +98,15 @@
       <!--<a-entity camera></a-entity>-->
 
       <!--<a-camera gps-camera rotation-reader simulate latitude="true" simulate longitude="true" simulate altitude="true"></a-camera>-->
-      <a-camera gps-camera rotation-reader position="0 1.6 0"></a-camera>
+      <!--<a-camera gps-camera rotation-reader position="0 1.6 0"></a-camera>-->
+      <a-camera gps-projected-camera rotation-reader></a-camera>
 
       <a-text
-        value="Welcome to mammoth AR."
-        look-at="[gps-camera]"
+        value="Welcome to mammoth AR Test 1."
+        look-at="[gps-projected-camera]"
         scale="5 5 5"
-        gps-entity-place="latitude: 45.412115; longitude: -75.693051"
-        position="0 4 -20"
+        gps-projected-entity-place="latitude: 45.412115; longitude: -75.693051"
+        position="0 2 -20"
         text.align="center"
       ></a-text>
 
