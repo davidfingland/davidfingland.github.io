@@ -73,7 +73,7 @@
             <a-entity id="bison2" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 60 0" scale="1 1 1" position="-5 0 0" animation-mixer/></a-entity>
             <a-entity id="bison3" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 40 0" scale="1 1 1" position="-7 0 -2" animation-mixer/></a-entity>
             <a-entity id="saberanim" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 50000">
-                <a-entity id="saber" gltf-model="./assets/sabertooth/Sabertooth.gltf" position="150 0 0" scale="1 1 1" animation-mixer/></a-entity>
+                <a-entity id="saber" gltf-model="./assets/sabertooth/Sabertooth.gltf" position="15 0 0" scale="1 1 1" animation-mixer/></a-entity>
             </a-entity>
         </a-entity>
 
@@ -89,11 +89,7 @@
             <a-entity id="bird3" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 180 0" scale="1 1 1" position="-4 5 0" animation-mixer/></a-entity>
         </a-entity>
 
-        <a-text
-        value="Mammoth AR Test 1"
-        scale="5 5 5"
-        rotation="0 180 0"
-        ></a-text>
+        
 
       </a-entity>
 
@@ -103,6 +99,15 @@
 
       <!--<a-camera gps-camera rotation-reader simulate latitude="true" simulate longitude="true" simulate altitude="true"></a-camera>-->
       <a-camera gps-camera rotation-reader position="0 1.6 20"></a-camera>
+
+      <a-text
+        value="This content will always face you."
+        look-at="[gps-camera]"
+        scale="5 5 5"
+        gps-entity-place="latitude: 45.412115; longitude: -75.693051"
+        position="-4 4 4"
+      ></a-text>
+
     </a-scene>
 
     
