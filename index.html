@@ -80,14 +80,23 @@
               <a-entity id="bird3" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 180 0" scale="25 25 25" position="-40 50 0" animation-mixer/></a-entity>
           </a-entity>
 
+        <a-text
+        value="Test"
+        scale="50 50 50"
+        rotation="0 180 0"
+        ></a-text>
+
       </a-entity>
+
+      
       
       <!--</a-nft>-->
       <!-- static camera that moves according to the device movemenents -->
       <!--<a-entity camera></a-entity>-->
 
-      <!--took gps out of this for now - can put pack in-->
-      <a-camera rotation-reader> </a-camera>
+      <a-camera gps-camera rotation-reader simulate latitude="true" simulate longitude="true"></a-camera>
     </a-scene>
+
+    
   </body>
 </html>
