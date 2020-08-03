@@ -47,7 +47,13 @@
       embedded
       arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
 
-      <a-camera gps-camera rotation-reader></a-camera>
+      <a-entity id="groupbirds" gps-entity-place="longitude: -75.689763; latitude: 45.412706;" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing:linear">
+        <a-entity id="bird1" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 0 0" scale="15 15 15" position="20 20 0" animation-mixer/></a-entity>
+        <a-entity id="bird2" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 0 0" scale="15 15 15" position="30 30 0"animation-mixer/></a-entity>
+        <a-entity id="bird3" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 180 0" scale="15 15 15" position="-20 40 0" animation-mixer/></a-entity>
+      </a-entity>
+
+      <!--<a-camera gps-camera rotation-reader></a-camera>-->
       <!-- a-nft is the anchor that defines an Image Tracking entity -->
       <!-- on 'url' use the path to the Image Descriptors created before. -->
       <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
@@ -75,13 +81,9 @@
         </a-entity>    
       </a-nft>
 
-      <a-entity id="groupbirds" gps-entity-place="longitude: -75.689763; latitude: 45.412706;" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing:linear">
-        <a-entity id="bird1" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 0 0" scale="15 15 15" position="20 20 0" animation-mixer/></a-entity>
-        <a-entity id="bird2" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 0 0" scale="15 15 15" position="30 30 0"animation-mixer/></a-entity>
-        <a-entity id="bird3" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 180 0" scale="15 15 15" position="-20 40 0" animation-mixer/></a-entity>
-      </a-entity>
+      
       <!-- static camera that moves according to the device movemenents -->
-      <!--<a-entity camera></a-entity>-->
+      <a-entity camera></a-entity>
     </a-scene>
   </body>
 </html>
