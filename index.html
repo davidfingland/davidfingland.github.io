@@ -46,7 +46,9 @@
       renderer="logarithmicDepthBuffer: true;"
       embedded
       arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
-      <a-entity camera id="temp-parent">
+
+      <a-entity id="temp-parent" position="0 -0 -220" rotation="0 180 0">
+      
       <!-- a-nft is the anchor that defines an Image Tracking entity -->
       <!-- on 'url' use the path to the Image Descriptors created before. -->
       <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
@@ -77,10 +79,15 @@
               <a-entity id="bird2" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 0 0" scale="25 25 25" position="60 40 0"animation-mixer/></a-entity>
               <a-entity id="bird3" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 180 0" scale="25 25 25" position="-40 50 0" animation-mixer/></a-entity>
           </a-entity>
+
       </a-entity>
+      
       <!--</a-nft>-->
       <!-- static camera that moves according to the device movemenents -->
       <!--<a-entity camera></a-entity>-->
+
+      <!--took gps out of this for now - can put pack in-->
+      <a-camera rotation-reader> </a-camera>
     </a-scene>
   </body>
 </html>
