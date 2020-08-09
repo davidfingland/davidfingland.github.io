@@ -47,30 +47,21 @@
       embedded
       arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
 
-      <!--IMAGE TRACKING-->
-      <!--<a-nft
-        type="nft"
-        url="./assets/tracking/mammothcaption"
-        smooth="true"
-        smoothCount="10"
-        smoothTolerance=".01"
-        smoothThreshold="5">
-        <a-text
-        value="Test 2"
-        scale="50 50 50"
-        rotation="0 0 0"
-        ></a-text>
-      </a-nft>-->
+      <a-entity light="type: ambient; intensity: 0.8;"></a-entity>
+      <a-entity light="type: directional;
+                   castShadow: true;
+                   intensity: 2;
+                   shadowCameraVisible: true;"
+            position="20 5 -10"></a-entity>
 
-      <a-entity id="temp-parent" gps-entity-place="latitude: 45.412115; longitude: -75.693051" position="0 0 -20">
+        
+
+
+      <a-entity id="temp-parent" gps-entity-place="latitude: 45.412115; longitude: -75.693051" position="0 0 -20" rotation="0 0 0" shadow="cast: true" animation="property: rotation; to: 0 360 0; loop: true; dur: 100000">
       
-      <!-- a-nft is the anchor that defines an Image Tracking entity -->
-      <!-- on 'url' use the path to the Image Descriptors created before. -->
-      <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
       
-          <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
         <a-entity id="groupmuseum" rotation="0 0 0">
-            <a-entity id="bison2" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 60 0" scale="1 1 1" position="-5 0 0" animation-mixer/></a-entity>
+            <a-entity id="bison2" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 80 0" scale="1 1 1" position="-5 0 0" animation-mixer/></a-entity>
             <a-entity id="bison3" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 40 0" scale="1 1 1" position="-7 0 -2" animation-mixer/></a-entity>
             <a-entity id="saberanim" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 50000">
                 <a-entity id="saber" gltf-model="./assets/sabertooth/Sabertooth.gltf" position="15 0 0" scale="1 1 1" animation-mixer/></a-entity>
@@ -99,17 +90,20 @@
       <!--<a-camera gps-camera rotation-reader simulate latitude="true" simulate longitude="true" simulate altitude="true"></a-camera>-->
       <!--<a-camera gps-projected-camera rotation-reader></a-camera>-->
 
+      <a-text
+      value="Welcome to mammoth AR Test 3."
+      look-at="[gps-camera]"
+      scale="5 5 5"
+      gps-entity-place="latitude: 45.412115; longitude: -75.693051"
+      position="0 4 0"
+      text.align="center"
+      ></a-text>
+
+      <a-plane color="#CCC" height="40" width="40" rotation="-90 0 0" shadow="receive: true" ></a-plane>    
 
       <a-camera gps-camera rotation-reader></a-camera>
       
-      <a-text
-        value="Welcome to mammoth AR Test 3."
-        look-at="[gps-camera]"
-        scale="5 5 5"
-        gps-entity-place="latitude: 45.412115; longitude: -75.693051"
-        position="0 4 -20"
-        text.align="center"
-      ></a-text>
+      
 
     </a-scene>
 
