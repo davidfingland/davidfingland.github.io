@@ -57,7 +57,7 @@
         
 
 
-      <a-entity id="temp-parent" gps-entity-place="latitude: 45.412115; longitude: -75.693051" position="0 0 -20" rotation="0 0 0" shadow="cast: true" animation="property: rotation; to: 0 360 0; loop: true; dur: 100000">
+      <a-entity id="temp-parent" gps-entity-place="latitude: 45.412115; longitude: -75.693051" position="0 0 -20" rotation="0 0 0" shadow="cast: true">
       
       
         <a-entity id="groupmuseum" rotation="0 0 0">
@@ -99,7 +99,7 @@
       text.align="center"
       ></a-text>
 
-      <a-plane color="#CCC" height="40" width="40" rotation="-90 0 0" shadow="receive: true" ></a-plane>    
+      <a-plane color="#CCC" height="40" width="40" rotation="-90 0 0" shadow="receive: true" material="blending:multiply"></a-plane>    
 
       <a-camera gps-camera rotation-reader></a-camera>
       
