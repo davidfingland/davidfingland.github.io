@@ -64,15 +64,28 @@
       embedded
       arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
 
-      <a-entity light="type: ambient; intensity: 0.8;"></a-entity>
-      <a-entity light="type: directional;
-                   castShadow: true;
-                   intensity: 2;
-                   shadowCameraVisible: false;"
-            position="20 20 -10"></a-entity>
+
+      <a-entity id="lighting" gps-entity-place="latitude: 45.413131; longitude: -75.688960">
+
+        <a-entity light="type: ambient; intensity: 0.8;"></a-entity>
+        <a-entity light="type: directional;
+                     castShadow: true;
+                     intensity: 2;
+                     shadowCameraVisible: false;"
+                  target="#directionaltarget"
+                  position="20 20 0">
+            <!-- This is not working, need to get it to point down so light can move with GPS. 
+              Also need to expand footprint of light see inspect mode 5 -5 etc.-->
+              <a-entity id="directionaltarget" position="4 4 0"></a-entity>
+            
+        </a-entity>
+
+        <a-plane color="#CCC" height="40" width="40" rotation="-90 0 0" shadow="receive: true" shadow-material></a-plane>  
+        
+      </a-entity>
 
 
-      <a-entity id="temp-parent" gps-entity-place="latitude: 45.413131; longitude: -75.688960" position="0 0 -20" rotation="0 0 0" shadow="cast: true">
+      <a-entity id="temp-parent" gps-entity-place="latitude: 45.413131; longitude: -75.688960" rotation="0 0 0" shadow="cast: true">
       
       
         <a-entity id="groupmuseum" rotation="0 0 0">
@@ -97,37 +110,27 @@
 
       </a-entity>
 
-      
-      <!-- static camera that moves according to the device movemenents -->
-      <!--<a-entity camera></a-entity>-->
-      <!--<a-camera gps-camera rotation-reader simulate latitude="true" simulate longitude="true" simulate altitude="true"></a-camera>-->
-      <!--<a-camera gps-projected-camera rotation-reader></a-camera>-->
+      <a-entity id="welcome" gps-entity-place="latitude: 45.413131; longitude: -75.688960">
+        <a-text
+        value="Welcome to mammoth AR Test 3."
+        look-at="[gps-camera]"
+        scale="2 2 2"
+        text.align="center"
+        ></a-text>
 
-      <a-text
-      value="Welcome to mammoth AR Test 3."
-      look-at="[gps-camera]"
-      scale="5 5 5"
-      gps-entity-place="latitude: 45.413131; longitude: -75.688960"
-      position="0 4 0"
-      text.align="center"
-      ></a-text>
+        <a-text
+        value="Welcome to mammoth AR Test 3."
+        look-at="[gps-camera]"
+        scale="2 2 2"
+        position="0 0 -20"
+        rotation="0 180 0"
+        text.align="center"
+        ></a-text>
 
-      <a-text
-      value="Welcome to mammoth AR Test 3."
-      look-at="[gps-camera]"
-      scale="5 5 5"
-      gps-entity-place="latitude: 45.413131; longitude: -75.688960"
-      position="0 4 0"
-      rotation="0 180 0"
-      text.align="center"
-      ></a-text>
-
-      <a-plane color="#CCC" height="40" width="40" rotation="-90 0 0" gps-entity-place="latitude: 45.413131; longitude: -75.688960" shadow="receive: true" shadow-material></a-plane>  
+      </a-entity>
 
       <a-camera gps-camera rotation-reader></a-camera>
       
-      
-
     </a-scene>
 
     
