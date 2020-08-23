@@ -52,12 +52,7 @@
   </head>
 
   <body style="margin : 0px; overflow: hidden;">
-    <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
-    <!--<div class="arjs-loader">
-      <div>Will dis work...</div>
-    </div>-->
 
-    <!-- a-frame scene -->
     <a-scene
       vr-mode-ui="enabled: false;"
       renderer="logarithmicDepthBuffer: true;"
@@ -71,7 +66,11 @@
         <a-entity light="type: directional;
                      castShadow: true;
                      intensity: 2;
-                     shadowCameraVisible: false;"
+                     shadowCameraVisible: false;
+                     shadowCameraLeft: -20;
+                     shadowCameraRight:20;
+                     shadowCameraTop:20;
+                     shadowCameraBottom:-20"
                   target="#directionaltarget"
                   position="20 20 0">
             <!-- This is not working, need to get it to point down so light can move with GPS. 
@@ -92,7 +91,7 @@
             <a-entity id="bison2" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 80 0" scale="1 1 1" position="-5 0 0" animation-mixer/></a-entity>
             <a-entity id="bison3" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 40 0" scale="1 1 1" position="-7 0 -2" animation-mixer/></a-entity>
             <a-entity id="saberanim" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 50000">
-                <a-entity id="saber" gltf-model="./assets/sabertooth/Sabertooth.gltf" position="15 0 0" scale="1 1 1" animation-mixer/></a-entity>
+                <a-entity id="saber" gltf-model="./assets/sabertooth/Sabertooth.gltf" position="10 0 0" scale="1 1 1" animation-mixer/></a-entity>
             </a-entity>
         </a-entity>
 
@@ -103,33 +102,34 @@
         </a-entity>
 
         <a-entity id="groupbirds" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing:linear">
-            <a-entity id="bird1" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 0 0" scale="1 1 1" position="4 3 0" animation-mixer/></a-entity>
-            <a-entity id="bird2" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 0 0" scale="1 1 1" position="6 4 0"animation-mixer/></a-entity>
-            <a-entity id="bird3" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 180 0" scale="1 1 1" position="-4 5 0" animation-mixer/></a-entity>
+            <a-entity id="bird1" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 0 0" scale="2 2 2" position="4 3 0" animation-mixer/></a-entity>
+            <a-entity id="bird2" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 0 0" scale="2 2 2" position="6 4 0"animation-mixer/></a-entity>
+            <a-entity id="bird3" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 180 0" scale="2 2 2" position="-4 5 0" animation-mixer/></a-entity>
         </a-entity>
 
       </a-entity>
 
       <a-entity id="welcome" gps-entity-place="latitude: 45.413131; longitude: -75.688960">
         <a-text
-        value="Welcome to mammoth AR Test 3."
+        value="Welcome to Planet Ice."
         look-at="[gps-camera]"
         scale="2 2 2"
         text.align="center"
+        position="0 5 0"
         ></a-text>
 
         <a-text
-        value="Welcome to mammoth AR Test 3."
+        value="Welcome to Planet Ice."
         look-at="[gps-camera]"
         scale="2 2 2"
-        position="0 0 -20"
         rotation="0 180 0"
         text.align="center"
+        position="0 5 0"
         ></a-text>
 
       </a-entity>
 
-      <a-camera gps-camera rotation-reader></a-camera>
+      <a-camera gps-camera rotation-reader far="100"></a-camera>
       
     </a-scene>
 
