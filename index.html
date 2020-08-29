@@ -24,10 +24,24 @@
           mesh.material = new THREE.ShadowMaterial();
           mesh.material.opacity = 1.0;
           
-
         }
       });
     </script>
+
+  <script>
+    AFRAME.registerComponent('name', {
+      init: function () {
+        // Solution for Modifying Entities.
+        var today = new Date();
+        var h = today.getHours();
+        var shadowvalue = h-(24-h);
+
+        var sceneEl = document.querySelector('a-scene'); 
+        sceneEl.querySelector('#directionaltarget').setAttribute('position', {x: shadowvalue, y: -10, z: 0});
+        
+      }
+    });
+  </script>
     <!-- style for the loader -->
     <style>
       .arjs-loader {
@@ -53,7 +67,7 @@
 
   <body style="margin : 0px; overflow: hidden;">
 
-    <a-scene
+    <a-scene name
       vr-mode-ui="enabled: false;"
       renderer="logarithmicDepthBuffer: true;"
       embedded
@@ -73,7 +87,7 @@
                      shadowCameraBottom:-20;
                      target:#directionaltarget"
                   position="0 15 0">
-              <a-entity id="directionaltarget" position="0 -10 0"></a-entity>
+              <a-entity id="directionaltarget"></a-entity>
             
         </a-entity>
 
