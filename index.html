@@ -96,10 +96,10 @@
       </a-entity>
 
 
-      <a-entity id="temp-parent" gps-entity-place="latitude: 45.412762; longitude: -75.689809" rotation="0 90 0" shadow="cast: true">
+      <a-entity id="temp-parent" gps-entity-place="latitude: 45.412762; longitude: -75.689809" rotation="0 -90 0" shadow="cast: true">
       
       
-        <a-entity id="groupmuseum" rotation="0 0 0" position="0 0 0">
+        <a-entity id="groupmuseum" rotation="0 0 0" position="0 0 -1">
             <a-entity id="bison2" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 80 0" scale="1 1 1" position="-5 0 0" animation-mixer/></a-entity>
             <a-entity id="bison3" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 40 0" scale="1 1 1" position="-7 0 -2" animation-mixer/></a-entity>
             <a-entity id="saberanim" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 50000">
@@ -107,13 +107,13 @@
             </a-entity>
         </a-entity>
 
-        <a-entity id="groupmammoth" rotation="0 0 0" position="0 0 0">
+        <a-entity id="groupmammoth" rotation="0 0 0" position="0 0 -1">
             <a-entity id="mammoth2" gltf-model="./assets/cmammoth/ColumbianMammoth.gltf" rotation="0 0 0" scale="1 1 1" position="0 0 0"animation-mixer/></a-entity>
             <a-entity id="mammoth3" gltf-model="./assets/pmammoth/ColumbianMammoth.gltf" rotation="0 310 0" scale="1 1 1" position="5 0 0"animation-mixer/></a-entity>
             <a-entity id="mammoth4" gltf-model="./assets/pmammoth/ColumbianMammoth.gltf" rotation="0 50 0" scale="1 1 1" position="0 0 5"animation-mixer/></a-entity>
         </a-entity>
 
-        <a-entity id="groupbirds" rotation="0 0 0" position="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing:linear">
+        <a-entity id="groupbirds" rotation="0 0 0" position="0 0 -1" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing:linear">
             <a-entity id="bird1" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 0 0" scale="2 2 2" position="4 -1 0" animation-mixer/></a-entity>
             <a-entity id="bird2" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 0 0" scale="2 2 2" position="6 -2 0"animation-mixer/></a-entity>
             <a-entity id="bird3" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 180 0" scale="2 2 2" position="-4 -4 0" animation-mixer/></a-entity>
@@ -127,7 +127,7 @@
         look-at="[gps-camera]"
         scale="2 2 2"
         text.align="center"
-        position="2 5 0"
+        position="2 5 -1"
         ></a-text>
 
         <a-text
@@ -136,7 +136,7 @@
         scale="2 2 2"
         rotation="0 180 0"
         text.align="center"
-        position="2 5 0"
+        position="2 5 -1"
         ></a-text>
 
       </a-entity>
