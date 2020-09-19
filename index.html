@@ -6,7 +6,7 @@
     <title>Image based tracking AR.js demo</title>
     <!-- import aframe and then ar.js with image tracking / location based features -->
     <script src='https://aframe.io/releases/1.0.4/aframe.min.js'></script>
-    <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     <script>
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
@@ -100,8 +100,8 @@
       
       
         <a-entity id="groupmuseum" rotation="0 0 0" position="0 0 -1">
-            <a-entity id="bison2" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 80 0" scale="1 1 1" position="-5 0 0" animation-mixer/></a-entity>
-            <a-entity id="bison3" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 40 0" scale="1 1 1" position="-7 0 -2" animation-mixer/></a-entity>
+            <a-entity id="bison2" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 30 0" scale="1 1 1" position="-3 0 0" animation-mixer/></a-entity>
+            <a-entity id="bison3" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 -50 0" scale="1 1 1" position="3.5 0 -2" animation-mixer/></a-entity>
             <a-entity id="saberanim" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 50000">
                 <a-entity id="saber" gltf-model="./assets/sabertooth/Sabertooth.gltf" position="10 0 0" scale="1 1 1" animation-mixer/></a-entity>
             </a-entity>
@@ -127,7 +127,7 @@
         look-at="[gps-camera]"
         scale="2 2 2"
         text.align="center"
-        position="2 5 -1"
+        position="-2 5 -1"
         ></a-text>
 
         <a-text
