@@ -18,8 +18,11 @@
         // `this.el` is the element.
         // `object3D` is the three.js object.
         // `position` is a three.js Vector3.
+        let posx = this.el.object3D.position.x;
+        let posz = this.el.object3D.position.z;
+
         
-        if (this.el.object3D.position.x > 1)
+        if (posx > 0.5 || posx < -0.5 || posz > 0.5 || posz < -0.5)
         console.log(this.el.object3D.position);
 
       }
