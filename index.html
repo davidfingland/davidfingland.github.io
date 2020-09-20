@@ -13,6 +13,20 @@
     </script>
 
     <script>
+    AFRAME.registerComponent('rotation-reader', {
+      tick: function () {
+        // `this.el` is the element.
+        // `object3D` is the three.js object.
+        // `position` is a three.js Vector3.
+        
+        if (this.el.object3D.position.x > 1)
+        console.log(this.el.object3D.position);
+
+      }
+    });
+    </script>
+
+    <script>
       AFRAME.registerComponent('shadow-material', {
         init: function(){
           console.log('shadow-material');
