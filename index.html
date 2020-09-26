@@ -39,12 +39,12 @@
         let posx = this.el.object3D.position.x;
         let posz = this.el.object3D.position.z;
         if (posx > 0.5 || posx < -0.5 || posz > 0.5 || posz < -0.5){
-          museumEl.object3D.position.z = -1 + posz;
-          museumEl.object3D.position.x = posx;
-          mammothEl.object3D.position.z = -1 + posz;
-          mammothEl.object3D.position.x = posx;
+          museumEl.object3D.position.z = -1 - posz;
+          museumEl.object3D.position.x = 0 - posx;
+          mammothEl.object3D.position.z = -1 - posz;
+          mammothEl.object3D.position.x = 0 - posx;
           birdsEl.object3D.position.z = -1 + posz;
-          birdsEl.object3D.position.x = posx;
+          birdsEl.object3D.position.x = 0 - posx;
           //console.log(groupEl.object3D.position.z);
           //console.log(groupEl.object3D.position.x);
         }
