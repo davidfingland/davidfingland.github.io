@@ -35,12 +35,15 @@
         var museumEl = document.querySelector('#groupmuseum');
         var mammothEl = document.querySelector('#groupmammoth');
         var birdsEl = document.querySelector('#groupbirds');
+        var holderEl = document.querySelector('#holder');
         let posx = this.el.object3D.position.x;
         let posz = this.el.object3D.position.z;
 
         var position = new THREE.Vector3();
-        console.log(position);
-        console.log(this.el.object3D.position);
+        console.log(position); //worldspace of camera
+        //console.log(this.el.object3D.position); // position of camera 
+        console.log(holderEl.object3D.position); // position of holder
+
         //console.log(museumEl.object3D.position.z);
         //console.log(museumEl.object3D.position.x);
 
@@ -210,6 +213,7 @@
       -->
 
       <a-entity
+      id = "holder"
       position="0 1.6 0"
       >
        <a-camera 
