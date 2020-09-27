@@ -35,9 +35,11 @@
         var museumEl = document.querySelector('#groupmuseum');
         var mammothEl = document.querySelector('#groupmammoth');
         var birdsEl = document.querySelector('#groupbirds');
-
         let posx = this.el.object3D.position.x;
         let posz = this.el.object3D.position.z;
+        console.log(museumEl.object3D.position.z);
+        console.log(museumEl.object3D.position.x);
+
         if (posx > 0.1 || posx < -0.1 || posz > 0.1 || posz < -0.1){
           museumEl.object3D.position.z = -1 - posz;
           museumEl.object3D.position.x = 0 - posx;
@@ -45,8 +47,7 @@
           mammothEl.object3D.position.x = 0 - posx;
           birdsEl.object3D.position.z = -1 + posz;
           birdsEl.object3D.position.x = 0 - posx;
-          console.log(museumEl.object3D.position.z);
-          console.log(museumEl.object3D.position.x);
+          
         }
 
       }
