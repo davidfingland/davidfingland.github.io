@@ -14,19 +14,18 @@
 
     <script>
     AFRAME.registerComponent('rotation-reader', {
-
       init: function(){
         window.addEventListener('devicemotion', function(event) {
           //console.log(event.acceleration.x + ' m/s2');
-          while (event.acceleration.x > 1 | event.acceleration.x < -1){
+         // while (event.acceleration.x > 1 | event.acceleration.x < -1){
             this.object3D.position.x = this.El.object3D.position.x + event.acceleration.x;
-            console.log('test1');
-          }
+            console.log(this.object3D.position.x);
+         // }
 
-          while (event.acceleration.z > 1 | event.acceleration.z > -1){
+          //while (event.acceleration.z > 1 | event.acceleration.z > -1){
           this.object3D.position.z = this.El.object3D.position.z + event.acceleration.z;
-          console.log('test2');
-          }
+         // console.log('test2');
+         // }
         });
         
       },
