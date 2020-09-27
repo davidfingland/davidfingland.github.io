@@ -18,6 +18,9 @@
       init: function(){
         let posx = 0;
         var museumEl;
+        window.addEventListener('devicemotion', function(event) {
+        console.log(event.acceleration.x + ' m/s2');
+        });
         //console.log('I am ready')
         //var sceneEl = document.querySelector('a-scene');
         //var groupEl = document.querySelector('#groupmuseum');
@@ -40,7 +43,7 @@
         let posz = this.el.object3D.position.z;
 
         var position = new THREE.Vector3();
-        console.log(position); //worldspace of camera
+        //console.log(position); //worldspace of camera
         //console.log(this.el.object3D.position); // position of camera 
         //console.log(holderEl.object3D.position); // position of holder
 
@@ -221,7 +224,7 @@
        near="1"
        far="500"
        position="0 0 0"
-       gps-camera="gpsMinDistance:0"
+       gps-camera="gpsMinDistance:20"
        rotation-reader>
        
          
