@@ -37,8 +37,15 @@
         var birdsEl = document.querySelector('#groupbirds');
         let posx = this.el.object3D.position.x;
         let posz = this.el.object3D.position.z;
-        console.log(museumEl.object3D.position.z);
-        console.log(museumEl.object3D.position.x);
+
+        var position = new THREE.Vector3();
+        console.log(position);
+        //console.log(museumEl.object3D.position.z);
+        //console.log(museumEl.object3D.position.x);
+
+        return function () {
+        this.el.object3D.getWorldPosition(position);
+        };
 
         if (posx > 0.1 || posx < -0.1 || posz > 0.1 || posz < -0.1){
           museumEl.object3D.position.z = -1 - posz;
