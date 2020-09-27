@@ -40,6 +40,7 @@
 
         var position = new THREE.Vector3();
         console.log(position);
+        console.log(this.el.object3D.position);
         //console.log(museumEl.object3D.position.z);
         //console.log(museumEl.object3D.position.x);
 
@@ -206,13 +207,20 @@
       >
       -->
 
-      <a-camera near="0.1"
+      <a-entity near="0.1"
       far="500"
       position="0 1.6 0"
       gps-camera="gpsMinDistance: 20"
-      rotation-reader
+      
       >
-      </a-camera>
+       <a-camera 
+       active 
+       rotation-reader
+       position="0 0 0">
+         
+       </a-camera>
+    
+      </a-entity>
       
     </a-scene>
 
