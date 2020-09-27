@@ -19,12 +19,12 @@
         window.addEventListener('devicemotion', function(event) {
           //console.log(event.acceleration.x + ' m/s2');
           while (event.acceleration.x > 1 | event.acceleration.x < -1){
-            this.object3D.position.x = holderEl.object3D.position.x + event.acceleration.x;
+            this.object3D.position.x = this.El.object3D.position.x + event.acceleration.x;
             console.log('test1');
           }
 
           while (eventacceleration.z > 1 | event.acceleration.z > -1){
-          this.object3D.position.z = holderEl.object3D.position.z + event.acceleration.z;
+          this.object3D.position.z = this.El.object3D.position.z + event.acceleration.z;
           console.log('test2');
           }
         });
