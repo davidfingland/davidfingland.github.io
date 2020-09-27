@@ -16,21 +16,14 @@
     AFRAME.registerComponent('rotation-reader', {
 
       init: function(){
-        var holderEl = document.querySelector('#holder');
         window.addEventListener('devicemotion', function(event) {
           //console.log(event.acceleration.x + ' m/s2');
-          holderEl.object3D.position.x = holderEl.object3D.position.x + event.acceleration.x;
-          holderEl.object3D.position.z = holderEl.object3D.position.z + event.acceleration.z;
-          console.log(holderEl.object3D.position.x);
+          this.object3D.position.x = holderEl.object3D.position.x + event.acceleration.x;
+          this.object3D.position.z = holderEl.object3D.position.z + event.acceleration.z;
+          console.log(this.object3D.position.x + 'test1');
           //console.log(holderEl.object3D.position.x + 'new pos');
         });
-        //console.log('I am ready')
-        //var sceneEl = document.querySelector('a-scene');
-        //var groupEl = document.querySelector('#groupmuseum');
-        //console.log(groupEl);
-        //groupEl.object3D.position.x = posx;
-        //groupEl.object3D.position.Z = posz;
-        //console.log(posx);
+        
       },
 
       
@@ -218,22 +211,19 @@
       COULD MOVE PARENT BELOW INSTEAD OF OBJECTS
       -->
 
-      <a-entity
-      id = "holder"
+      
+      
+      <a-camera 
+      near="1"
+      far="500"
       position="0 1.6 0"
-      >
-       <a-camera 
-       active 
-       near="1"
-       far="500"
-       position="0 0 0"
-       gps-camera="gpsMinDistance:20"
-       rotation-reader>
-       
-         
-       </a-camera>
+      gps-camera="gpsMinDistance:20"
+      rotation-reader>
+      
+        
+      </a-camera>
     
-      </a-entity>
+      
       
     </a-scene>
 
