@@ -17,15 +17,15 @@
       init: function(){
         window.addEventListener('devicemotion', function(event) {
           //console.log(event.acceleration.x + ' m/s2');
-         // while (event.acceleration.x > 1 | event.acceleration.x < -1){
-            this.object3D.position.x = this.El.object3D.position.x + event.acceleration.x;
-            console.log(this.object3D.position.x);
-         // }
+            while (event.acceleration.x > 1 | event.acceleration.x < -1){
+              this.el.object3D.position.x = this.el.object3D.position.x + event.acceleration.x;
+              console.log('test1');
+            }
 
-          //while (event.acceleration.z > 1 | event.acceleration.z > -1){
-          this.object3D.position.z = this.El.object3D.position.z + event.acceleration.z;
-         // console.log('test2');
-         // }
+          while (event.acceleration.z > 1 | event.acceleration.z > -1){
+              this.el.object3D.position.z = this.el.object3D.position.z + event.acceleration.z;
+              console.log('test2');
+          }
         });
         
       },
