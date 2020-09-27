@@ -18,10 +18,15 @@
       init: function(){
         window.addEventListener('devicemotion', function(event) {
           //console.log(event.acceleration.x + ' m/s2');
-          this.object3D.position.x = holderEl.object3D.position.x + event.acceleration.x;
+          while (event.acceleration.x > 1 | event.acceleration.x < -1){
+            this.object3D.position.x = holderEl.object3D.position.x + event.acceleration.x;
+            console.log('test1');
+          }
+
+          while (eventacceleration.z > 1 | event.acceleration.z > -1){
           this.object3D.position.z = holderEl.object3D.position.z + event.acceleration.z;
-          console.log(this.object3D.position.x + 'test1');
-          //console.log(holderEl.object3D.position.x + 'new pos');
+          console.log('test2');
+          }
         });
         
       },
@@ -50,15 +55,6 @@
         this.el.object3D.getWorldPosition(position);
         };
 
-        if (posx > 0.1 || posx < -0.1 || posz > 0.1 || posz < -0.1){
-          museumEl.object3D.position.z = -1 - posz;
-          museumEl.object3D.position.x = 0 - posx;
-          mammothEl.object3D.position.z = -1 - posz;
-          mammothEl.object3D.position.x = 0 - posx;
-          birdsEl.object3D.position.z = -1 + posz;
-          birdsEl.object3D.position.x = 0 - posx;
-          
-        }
 
       }
     });
