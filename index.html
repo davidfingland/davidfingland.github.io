@@ -205,18 +205,21 @@
       rotation-reader
        </a-camera>
       >
+
+      COULD MOVE PARENT BELOW INSTEAD OF OBJECTS
       -->
 
-      <a-entity near="0.1"
-      far="500"
+      <a-entity
       position="0 1.6 0"
-      gps-camera="gpsMinDistance: 20"
-      
       >
        <a-camera 
        active 
-       rotation-reader
-       position="0 0 0">
+       near="1"
+       far="500"
+       position="0 0 0"
+       gps-camera="gpsMinDistance:0"
+       rotation-reader>
+       
          
        </a-camera>
     
