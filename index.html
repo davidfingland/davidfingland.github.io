@@ -16,7 +16,7 @@
     AFRAME.registerComponent('rotation-reader', {
 
       init: function(){
-        var holderEl = document.querySelector('#holder');
+        //var holderEl = document.querySelector('#holder');
         window.addEventListener('devicemotion', function(event) {
           console.log(event.acceleration + ' m/s2');
           //holderEl.object3D.position = holderEl.object3D.position.x + event.acceleration.x;
