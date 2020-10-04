@@ -20,20 +20,22 @@
         window.addEventListener('devicemotion', function(event) {
           //console.log(event.acceleration.x + ' m/s2');
           if(event.acceleration.x === null || event.acceleration.z === null) return;
-	        accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
+	        //accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
+          accelerate(event.acceleration.z, event.timeStamp);
           holderEl.object3D.position.z = + (-z[0].position*1000);
           //holderEl.object3D.position.z = holder.object3D.position.z + event.acceleration.z;
           console.log(holderEl.object3D.position.z);
            
         });
 
-        function accelerate(a, b, t) {
+        //function accelerate(a, b, t) {
+        function accelerate(a, t) {
 
           var newZ = Object.assign({}, z[0]);
           var newX = Object.assign({}, x[0]);
 
           newZ.acceleration = Math.abs(a) > .1 ? a : 0; // noise filter
-          newX.acceleration = Math.abs(a) > .1 ? a : 0; // noise filter
+          newX.acceleration = Math.abs(b) > .1 ? b : 0; // noise filter
 
           newZ.time = t;
           newX.time = t;
@@ -46,7 +48,7 @@
           newZ.position *= .999; // tend back to zero
 
           newX.velocity *= .9; // friction
-          newX.velocity = Math.abs(newZ.velocity) < .01 ? 0 : newZ.velocity; // noise filter
+          newX.velocity = Math.abs(newX.velocity) < .01 ? 0 : newX.velocity; // noise filter
           newX.position *= .999; // tend back to zero
 
           z.unshift(newZ);
