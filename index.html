@@ -19,16 +19,64 @@
         var holderEl = document.querySelector('#holder');
         window.addEventListener('devicemotion', function(event) {
           //console.log(event.acceleration.x + ' m/s2');
-          holderEl.object3D.position.x = holder.object3D.position.x + event.acceleration.x;
-          holderEl.object3D.position.z = holder.object3D.position.z + event.acceleration.z;
+          if(event.acceleration.x === null || event.acceleration.z === null) return;
+	        accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
+          holderEl.object3D.position.z = + (-z[0].position*1000);
+          //holderEl.object3D.position.z = holder.object3D.position.z + event.acceleration.z;
           console.log(holderEl.object3D.position.z);
            
         });
-        
+
+        function accelerate(a, b, t) {
+
+          var newZ = Object.assign({}, z[0]);
+          var newX = Object.assign({}, z[0]);
+
+          newZ.acceleration = Math.abs(a) > .1 ? a : 0; // noise filter
+          newX.acceleration = Math.abs(a) > .1 ? a : 0; // noise filter
+
+          newZ.time = t;
+          newX.time = t;
+
+          newZ = eulerStepZ(z[0], newZ);
+          newX = eulerStepX(x[0], newX);
+
+          newZ.velocity *= .9; // friction
+          newZ.velocity = Math.abs(newZ.velocity) < .01 ? 0 : newZ.velocity; // noise filter
+          newZ.position *= .999; // tend back to zero
+
+          newX.velocity *= .9; // friction
+          newX.velocity = Math.abs(newZ.velocity) < .01 ? 0 : newZ.velocity; // noise filter
+          newX.position *= .999; // tend back to zero
+
+          z.unshift(newZ);
+          x.unshift(newX);
+
+          }
+
+        function eulerStepZ(state0, state1) {
+          var interval = (state1.time - state0.time) / 1000; // convert ms to s
+          if(interval) {
+            state1.position = state0.position + state0.velocity * interval;
+            state1.velocity = state0.velocity + state0.acceleration * interval;
+          }
+          return Object.assign({}, state1);
+        }
+
+        function eulerStepX(state0, state1) {
+          var interval = (state1.time - state0.time) / 1000; // convert ms to s
+          if(interval) {
+            state1.position = state0.position + state0.velocity * interval;
+            state1.velocity = state0.velocity + state0.acceleration * interval;
+          }
+          return Object.assign({}, state1);
+        }
+      
       },
 
+
       
-      tick: function () {
+      tick: function (){
         // `this.el` is the element.
         // `object3D` is the three.js object.
         // `position` is a three.js Vector3.
