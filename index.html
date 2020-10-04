@@ -30,7 +30,7 @@
         function accelerate(a, b, t) {
 
           var newZ = Object.assign({}, z[0]);
-          var newX = Object.assign({}, z[0]);
+          var newX = Object.assign({}, x[0]);
 
           newZ.acceleration = Math.abs(a) > .1 ? a : 0; // noise filter
           newX.acceleration = Math.abs(a) > .1 ? a : 0; // noise filter
