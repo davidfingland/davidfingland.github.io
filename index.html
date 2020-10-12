@@ -55,6 +55,15 @@
            
         });
 
+        tick: function () {
+          // `this.el` is the element.
+          // `object3D` is the three.js object.
+
+          // `rotation` is a three.js Euler using radians. `quaternion` also available.
+          console.log(this.el.object3D.rotation);
+
+        }
+
           //function accelerate(a, b, t) {
           function accelerate(a, b, t) {
 
