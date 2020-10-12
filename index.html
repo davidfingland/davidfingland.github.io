@@ -38,6 +38,13 @@
 
         window.addEventListener('devicemotion', function(event) {
           //console.log(event.acceleration.x + ' m/s2');
+
+          //Find Rotation
+          var quaternion = new THREE.Quaternion();
+          this.el.object3D.getWorldQuaternion(quaternion);
+          console.log(this.el.object3D.rotation);
+
+
           if(event.acceleration.x === null || event.acceleration.z === null) return;
 	        //accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
@@ -49,7 +56,7 @@
 
           //console.log('x is ' + holderEl.object3D.position.x + ' while accel is ' + event.acceleration.x);
            
-        });
+          });
 
         //function accelerate(a, b, t) {
         function accelerate(a, b, t) {
@@ -114,21 +121,6 @@
         }
       
       },
-
-      tick: (function () {
-          var position = new THREE.Vector3();
-          var quaternion = new THREE.Quaternion();
-          //console.log(this.el.object3D.rotation);
-          console.log(this.el.object.position);
-
-          return function () {
-            this.el.object3D.getWorldPosition(position);
-            this.el.object3D.getWorldQuaternion(quaternion);
-
-
-            // position appears to work well. Try to attach to objects??? Holder?
-          };
-        })
 
     });
 
