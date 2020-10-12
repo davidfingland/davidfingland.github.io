@@ -62,11 +62,11 @@
           newZ = eulerStepZ(z[0], newZ);
           newX = eulerStepX(x[0], newX);
 
-          newZ.velocity *= .9; // friction
+          newZ.velocity *= 1; // friction
           newZ.velocity = Math.abs(newZ.velocity) < .01 ? 0 : newZ.velocity; // noise filter
           newZ.position *= .999; // tend back to zero
 
-          newX.velocity *= .9; // friction
+          newX.velocity *= 1; // friction
           newX.velocity = Math.abs(newX.velocity) < .01 ? 0 : newX.velocity; // noise filter
           newX.position *= .999; // tend back to zero
 
