@@ -38,13 +38,13 @@
 
         window.addEventListener('devicemotion', function(event) {
           //console.log(event.acceleration.x + ' m/s2');
-          var phonerotation;
+          var phonerotation = 0;
 
           if (this.el.object3D.rotation)
           phonerotation = this.el.object3D.rotation;
 
           else
-          phonerotation = 0,0,0;
+          phonerotation = 0;
 
           console.log(phonerotation);
           
