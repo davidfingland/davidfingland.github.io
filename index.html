@@ -40,10 +40,26 @@
           if(event.acceleration.x === null || event.acceleration.z === null) return;
 	        //accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
+
+          if(event.acceleration.z > 0.2){
+            holderEl.object3D.position.z += (z[0].position/10);
+          }
+
+          if(event.acceleration.z < -0.2){
+            holderEl.object3D.position.z += (-z[0].position/10);
+          }
+
+          if(event.acceleration.x > 0.2){
+            holderEl.object3D.position.x += (z[0].position/10);
+          }
+
+          if(event.acceleration.x < -0.2){
+            holderEl.object3D.position.x += (-z[0].position/10);
+          }
           //holderEl.object3D.position.z =+ (z[0].position);
           //holderEl.object3D.position.x =+ (x[0].position);
-          holderEl.object3D.position.z += (z[0].position/10);
-          holderEl.object3D.position.x += (x[0].position/10);
+          //holderEl.object3D.position.z += (z[0].position/10);
+          //holderEl.object3D.position.x += (x[0].position/10);
           //holderEl.object3D.position.z = holder.object3D.position.z + event.acceleration.z;
           console.log(holderEl.object3D.position.x);
            
