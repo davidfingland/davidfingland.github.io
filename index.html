@@ -45,7 +45,7 @@
           //holderEl.object3D.position.z += (z[0].position/10);
           //holderEl.object3D.position.x += (x[0].position/10);
           //holderEl.object3D.position.z = holder.object3D.position.z + event.acceleration.z;
-          console.log(holderEl.object3D.position.x + 'is x');
+          console.log(holderEl.object3D.position.x + ' is x');
            
         });
 
@@ -55,7 +55,7 @@
           var newZ = Object.assign({}, z[0]);
           var newX = Object.assign({}, x[0]);
 
-          if (Math.abs(a) > .1){
+          if (Math.abs(a) > .15){
           newZ.acceleration = a;  
           }
 
@@ -63,7 +63,7 @@
           newZ.acceleration = 0;  
           }
 
-          if (Math.abs(b) > .1){
+          if (Math.abs(b) > .15){
           newX.acceleration = b;  
           }
 
@@ -71,8 +71,7 @@
           newX.acceleration = 0;  
           }
 
-
-          //newZ.acceleration = Math.abs(a) > .1 ? a : 0; // noise filter
+          //^^newZ.acceleration = Math.abs(a) > .1 ? a : 0; // noise filter
           //newX.acceleration = Math.abs(b) > .1 ? b : 0; // noise filter
 
           newZ.time = t;
