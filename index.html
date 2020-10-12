@@ -45,7 +45,7 @@
           //holderEl.object3D.position.z += (z[0].position/10);
           //holderEl.object3D.position.x += (x[0].position/10);
           //holderEl.object3D.position.z = holder.object3D.position.z + event.acceleration.z;
-          console.log('x is ' + holderEl.object3D.position.x + 'while accel is' + event.acceleration.x);
+          console.log('x is ' + holderEl.object3D.position.x + ' while accel is ' + event.acceleration.x);
            
         });
 
@@ -55,7 +55,7 @@
           var newZ = Object.assign({}, z[0]);
           var newX = Object.assign({}, x[0]);
 
-          if (Math.abs(a) > .15){
+          if (Math.abs(a) > .05){
           newZ.acceleration = a;  
           }
 
@@ -63,7 +63,7 @@
           newZ.acceleration = 0;  
           }
 
-          if (Math.abs(b) > .15){
+          if (Math.abs(b) > .05){
           newX.acceleration = b;  
           }
 
@@ -80,13 +80,13 @@
           newZ = eulerStepZ(z[0], newZ);
           newX = eulerStepX(x[0], newX);
 
-          newZ.velocity *= .9; // friction
+          newZ.velocity *= 1; // friction
           //newZ.velocity = Math.abs(newZ.velocity) < .01 ? 0 : newZ.velocity; // noise filter
-          newZ.position *= .999; // tend back to zero
+          newZ.position *= 1; // tend back to zero
 
-          newX.velocity *= .9; // friction
+          newX.velocity *= 1; // friction
           //newX.velocity = Math.abs(newX.velocity) < .01 ? 0 : newX.velocity; // noise filter
-          newX.position *= .999; // tend back to zero
+          newX.position *= 1; // tend back to zero
 
           z.unshift(newZ);
           x.unshift(newX);
