@@ -17,6 +17,7 @@
       
       init: function(){
         var holderEl = document.querySelector('#holder');
+        
         var z = [
             {
               position: 0,
@@ -34,15 +35,16 @@
             time: undefined
           }
         ];
-
-
+        
         window.addEventListener('devicemotion', function(event) {
           //console.log(event.acceleration.x + ' m/s2');
           
           if(event.acceleration.x === null || event.acceleration.z === null) return;
           //rotation(phonerotation);
-         // console.log('test 4 ' + phonerotation);
+          //console.log('test 5 ' + phoneRotation);
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
+          test(test1,test2,test3);
+          console.log(test1 + 'test1' + test2 + 'test2' + test3 +'test3');
           holderEl.object3D.position.z =+ (z[0].position);
           holderEl.object3D.position.x =+ (x[0].position);
           //holderEl.object3D.position.z += (z[0].position/10);
@@ -121,14 +123,14 @@
       
       },
 
-      tick: function () {
+      tick: function test() {
       //throwing rotation in euler
-        //console.log(this.el.object3D.rotation);
-        var phonerotation;
-        phonerotation = this.el.object3D.rotation;
-        console.log(phonerotation + ' test 5')
-        
-
+        //this.el.object3D.rotation.push;
+        //console.log(this.el.object3D.rotation.x);
+        var test1 = this.el.object3D.rotation.x;
+        var test2 = this.el.object3D.rotation.y;
+        var test3 = this.el.object3D.rotation.z;
+        //console.log(test1 + 'test1' + test2 + 'test2' + test3 +'test3');
       }
 
     });
