@@ -40,8 +40,8 @@
           if(event.acceleration.x === null || event.acceleration.z === null) return;
 	        //accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
-          holderEl.object3D.position.z =+ (newZ.position.z);
-          holderEl.object3D.position.x =+ (newX.position.x);
+          holderEl.object3D.position.z =+ (z[0].position.z);
+          holderEl.object3D.position.x =+ (x[0].position.x);
           //holderEl.object3D.position.z += (z[0].position/10);
           //holderEl.object3D.position.x += (x[0].position/10);
           //holderEl.object3D.position.z = holder.object3D.position.z + event.acceleration.z;
