@@ -40,29 +40,8 @@
           if(event.acceleration.x === null || event.acceleration.z === null) return;
 	        //accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
-
-          if(event.acceleration.z > 0.2){
-            holderEl.object3D.position.z += (z[0].position);
-            console.log('forward 1');
-          }
-
-          else if(event.acceleration.z < -0.2){
-            holderEl.object3D.position.z += (-z[0].position);
-            console.log('back');
-          }
-
-          if(event.acceleration.x > 0.2){
-            holderEl.object3D.position.x += (x[0].position);
-            console.log('left');
-          }
-
-          else if(event.acceleration.x < -0.2){
-            holderEl.object3D.position.x += (-x[0].position);
-            console.log('right');
-          }
-
-          //holderEl.object3D.position.z =+ (z[0].position);
-          //holderEl.object3D.position.x =+ (x[0].position);
+          holderEl.object3D.position.z =+ (z[0].position);
+          holderEl.object3D.position.x =+ (x[0].position);
           //holderEl.object3D.position.z += (z[0].position/10);
           //holderEl.object3D.position.x += (x[0].position/10);
           //holderEl.object3D.position.z = holder.object3D.position.z + event.acceleration.z;
@@ -76,8 +55,25 @@
           var newZ = Object.assign({}, z[0]);
           var newX = Object.assign({}, x[0]);
 
-          newZ.acceleration = Math.abs(a) > .1 ? a : 0; // noise filter
-          newX.acceleration = Math.abs(b) > .1 ? b : 0; // noise filter
+          if (Math.abs(a) > .1){
+          newZ.acceleration = a;  
+          }
+
+          else {
+          newZ.acceleration = 0;  
+          }
+
+          if (Math.abs(b) > .1){
+          newX.acceleration = b;  
+          }
+
+          else {
+          newX.acceleration = 0;  
+          }
+
+
+          //newZ.acceleration = Math.abs(a) > .1 ? a : 0; // noise filter
+          //newX.acceleration = Math.abs(b) > .1 ? b : 0; // noise filter
 
           newZ.time = t;
           newX.time = t;
@@ -86,12 +82,12 @@
           newX = eulerStepX(x[0], newX);
 
           newZ.velocity *= .9; // friction
-          newZ.velocity = Math.abs(newZ.velocity) < .01 ? 0 : newZ.velocity; // noise filter
-          newZ.position *= .8; // tend back to zero
+          //newZ.velocity = Math.abs(newZ.velocity) < .01 ? 0 : newZ.velocity; // noise filter
+          newZ.position *= .999; // tend back to zero
 
           newX.velocity *= .9; // friction
-          newX.velocity = Math.abs(newX.velocity) < .01 ? 0 : newX.velocity; // noise filter
-          newX.position *= .8; // tend back to zero
+          //newX.velocity = Math.abs(newX.velocity) < .01 ? 0 : newX.velocity; // noise filter
+          newX.position *= .999; // tend back to zero
 
           z.unshift(newZ);
           x.unshift(newX);
