@@ -17,7 +17,7 @@
       
       init: function(){
         var holderEl = document.querySelector('#holder');
-        var readerEl = document.querySelector('#rotation-reader');
+        var phonerotation;
 
         var z = [
             {
@@ -119,8 +119,9 @@
 
         tick: (function () {
           
-          console.log(this.el.object3D.rotation);
-            
+          var phonerotation = this.el.object3D.rotation;
+          console.log(phonerotation);
+   
         })
 
       
