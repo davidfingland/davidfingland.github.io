@@ -43,8 +43,7 @@
           //console.log(event.acceleration.x + ' m/s2');
           
           if(event.acceleration.x === null || event.acceleration.z === null) return;
-          //rotation(phonerotation);
-          //console.log('test 5 ' + phoneRotation);
+          //use getrotation in here???
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
           console.log(test1 + 'test1' + test2 + 'test2' + test3 +'test3');
           holderEl.object3D.position.z =+ (z[0].position);
@@ -57,9 +56,6 @@
            
         });
 
-        //function rotation(phonerotation) {
-          //phonerotation = this.el.object3D.rotation;
-        //}
 
         //function accelerate(a, b, t) {
         function accelerate(a, b, t) {
