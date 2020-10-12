@@ -38,7 +38,16 @@
 
         window.addEventListener('devicemotion', function(event) {
           //console.log(event.acceleration.x + ' m/s2');
-          console.log(this.el.object3D.rotation);
+          var phonerotation;
+
+          if (this.el.object3D.rotation)
+          phonerotation = this.el.object3D.rotation;
+
+          else
+          phonerotation = 0,0,0;
+
+          console.log(phonerotation);
+          
           if(event.acceleration.x === null || event.acceleration.z === null) return;
 	        //accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
@@ -52,81 +61,79 @@
            
           });
 
-        //function accelerate(a, b, t) {
-        function accelerate(a, b, t) {
+          //function accelerate(a, b, t) {
+          function accelerate(a, b, t) {
 
-          var newZ = Object.assign({}, z[0]);
-          var newX = Object.assign({}, x[0]);
+            var newZ = Object.assign({}, z[0]);
+            var newX = Object.assign({}, x[0]);
 
-          if (Math.abs(a) > .05){
-          newZ.acceleration = a;  
+            if (Math.abs(a) > .05){
+            newZ.acceleration = a;  
+            }
+
+            else {
+            newZ.acceleration = 0;  
+            }
+
+            if (Math.abs(b) > .05){
+            newX.acceleration = b;  
+            }
+
+            else {
+            newX.acceleration = 0;  
+            }
+
+            //^^newZ.acceleration = Math.abs(a) > .1 ? a : 0; // noise filter
+            //newX.acceleration = Math.abs(b) > .1 ? b : 0; // noise filter
+
+            newZ.time = t;
+            newX.time = t;
+
+            newZ = eulerStepZ(z[0], newZ);
+            newX = eulerStepX(x[0], newX);
+
+            newZ.velocity *= 1; // friction
+            //newZ.velocity = Math.abs(newZ.velocity) < .01 ? 0 : newZ.velocity; // noise filter
+            newZ.position *= 1; // tend back to zero
+
+            newX.velocity *= 1; // friction
+            //newX.velocity = Math.abs(newX.velocity) < .01 ? 0 : newX.velocity; // noise filter
+            newX.position *= 1; // tend back to zero
+
+            z.unshift(newZ);
+            x.unshift(newX);
+
           }
 
-          else {
-          newZ.acceleration = 0;  
+          function eulerStepZ(state0, state1) {
+            var interval = (state1.time - state0.time) / 1000; // convert ms to s
+            if(interval) {
+              state1.position = state0.position + state0.velocity * interval;
+              state1.velocity = state0.velocity + state0.acceleration * interval;
+            }
+            return Object.assign({}, state1);
           }
 
-          if (Math.abs(b) > .05){
-          newX.acceleration = b;  
+          function eulerStepX(state0, state1) {
+            var interval = (state1.time - state0.time) / 1000; // convert ms to s
+            if(interval) {
+              state1.position = state0.position + state0.velocity * interval;
+              state1.velocity = state0.velocity + state0.acceleration * interval;
+            }
+            return Object.assign({}, state1);
           }
-
-          else {
-          newX.acceleration = 0;  
-          }
-
-          //^^newZ.acceleration = Math.abs(a) > .1 ? a : 0; // noise filter
-          //newX.acceleration = Math.abs(b) > .1 ? b : 0; // noise filter
-
-          newZ.time = t;
-          newX.time = t;
-
-          newZ = eulerStepZ(z[0], newZ);
-          newX = eulerStepX(x[0], newX);
-
-          newZ.velocity *= 1; // friction
-          //newZ.velocity = Math.abs(newZ.velocity) < .01 ? 0 : newZ.velocity; // noise filter
-          newZ.position *= 1; // tend back to zero
-
-          newX.velocity *= 1; // friction
-          //newX.velocity = Math.abs(newX.velocity) < .01 ? 0 : newX.velocity; // noise filter
-          newX.position *= 1; // tend back to zero
-
-          z.unshift(newZ);
-          x.unshift(newX);
-
-        }
-
-        function eulerStepZ(state0, state1) {
-          var interval = (state1.time - state0.time) / 1000; // convert ms to s
-          if(interval) {
-            state1.position = state0.position + state0.velocity * interval;
-            state1.velocity = state0.velocity + state0.acceleration * interval;
-          }
-          return Object.assign({}, state1);
-        }
-
-        function eulerStepX(state0, state1) {
-          var interval = (state1.time - state0.time) / 1000; // convert ms to s
-          if(interval) {
-            state1.position = state0.position + state0.velocity * interval;
-            state1.velocity = state0.velocity + state0.acceleration * interval;
-          }
-          return Object.assign({}, state1);
-        }
       
-      },
+        },
 
       tick: (function () {
-          var position = new THREE.Vector3();
-          var quaternion = new THREE.Quaternion();
+          
           //console.log(this.el.object3D.rotation);
           
 
           return function () {
-            this.el.object3D.getWorldPosition(position);
-            this.el.object3D.getWorldQuaternion(quaternion);
-
-
+            //this.el.object3D.getWorldPosition(position);
+            //this.el.object3D.getWorldQuaternion(quaternion);
+            this.el.object3D.rotation;
             // rotation appears to work well. Try to attach to accel?
           };
         })
