@@ -17,6 +17,9 @@
       
       init: function(){
         var holderEl = document.querySelector('#holder');
+        var test1;
+        var test2;
+        var test3;
         
         var z = [
             {
@@ -43,7 +46,6 @@
           //rotation(phonerotation);
           //console.log('test 5 ' + phoneRotation);
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
-          test(test1,test2,test3);
           console.log(test1 + 'test1' + test2 + 'test2' + test3 +'test3');
           holderEl.object3D.position.z =+ (z[0].position);
           holderEl.object3D.position.x =+ (x[0].position);
@@ -123,13 +125,17 @@
       
       },
 
-      tick: function test() {
+      tick: function () {
       //throwing rotation in euler
         //this.el.object3D.rotation.push;
         //console.log(this.el.object3D.rotation.x);
         var test1 = this.el.object3D.rotation.x;
         var test2 = this.el.object3D.rotation.y;
         var test3 = this.el.object3D.rotation.z;
+
+        test1.push;
+        test2.push;
+        test3.push;
         //console.log(test1 + 'test1' + test2 + 'test2' + test3 +'test3');
       }
 
