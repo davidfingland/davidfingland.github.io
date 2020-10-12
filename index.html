@@ -35,6 +35,17 @@
           }
         ];
 
+        tick: function () {
+          // `this.el` is the element.
+          // `object3D` is the three.js object.
+
+          // `rotation` is a three.js Euler using radians. `quaternion` also available.
+          console.log(this.el.object3D.rotation);
+
+          // `position` is a three.js Vector3.
+          console.log(this.el.object3D.position);
+        }
+
         window.addEventListener('devicemotion', function(event) {
           //console.log(event.acceleration.x + ' m/s2');
           if(event.acceleration.x === null || event.acceleration.z === null) return;
@@ -45,7 +56,8 @@
           //holderEl.object3D.position.z += (z[0].position/10);
           //holderEl.object3D.position.x += (x[0].position/10);
           //holderEl.object3D.position.z = holder.object3D.position.z + event.acceleration.z;
-          console.log('x is ' + holderEl.object3D.position.x + ' while accel is ' + event.acceleration.x);
+          
+          //console.log('x is ' + holderEl.object3D.position.x + ' while accel is ' + event.acceleration.x);
            
         });
 
