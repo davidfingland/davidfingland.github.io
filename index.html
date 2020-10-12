@@ -43,9 +43,9 @@
           var phonerotation;
           if(event.acceleration.x === null || event.acceleration.z === null) return;
           //accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
-          rotation(phonerotation);
+          //rotation(phonerotation);
 
-          console.log('test 3' + phonerotation);
+          //console.log('test 3' + phonerotation);
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
           holderEl.object3D.position.z =+ (z[0].position);
           holderEl.object3D.position.x =+ (x[0].position);
@@ -124,6 +124,12 @@
         }
       
       },
+
+      tick: function () {
+      //throwing rotation in euler
+        console.log(this.el.object3D.rotation);
+
+      }
 
 
     });
