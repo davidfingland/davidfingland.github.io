@@ -42,22 +42,22 @@
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
 
           if(event.acceleration.z > 0.2){
-            holderEl.object3D.position.z += (z[0].position/10);
+            holderEl.object3D.position.z += (z[0].position);
             console.log('forward');
           }
 
           if(event.acceleration.z < -0.2){
-            holderEl.object3D.position.z += (-z[0].position/10);
+            holderEl.object3D.position.z += (-z[0].position);
             console.log('back');
           }
 
           if(event.acceleration.x > 0.2){
-            holderEl.object3D.position.x += (z[0].position/10);
+            holderEl.object3D.position.x += (z[0].position);
             console.log('left');
           }
 
           if(event.acceleration.x < -0.2){
-            holderEl.object3D.position.x += (-z[0].position/10);
+            holderEl.object3D.position.x += (-z[0].position);
             console.log('right');
           }
           //holderEl.object3D.position.z =+ (z[0].position);
