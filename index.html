@@ -43,23 +43,24 @@
 
           if(event.acceleration.z > 0.2){
             holderEl.object3D.position.z += (z[0].position);
-            console.log('forward');
+            console.log('forward 1');
           }
 
-          if(event.acceleration.z < -0.2){
+          else if(event.acceleration.z < -0.2){
             holderEl.object3D.position.z += (-z[0].position);
             console.log('back');
           }
 
           if(event.acceleration.x > 0.2){
-            holderEl.object3D.position.x += (z[0].position);
+            holderEl.object3D.position.x += (x[0].position);
             console.log('left');
           }
 
-          if(event.acceleration.x < -0.2){
-            holderEl.object3D.position.x += (-z[0].position);
+          else if(event.acceleration.x < -0.2){
+            holderEl.object3D.position.x += (-x[0].position);
             console.log('right');
           }
+
           //holderEl.object3D.position.z =+ (z[0].position);
           //holderEl.object3D.position.x =+ (x[0].position);
           //holderEl.object3D.position.z += (z[0].position/10);
