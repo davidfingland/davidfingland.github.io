@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Image based tracking AR.js demo</title>
+    <!-- import aframe and then ar.js with image tracking / location based features -->
+    <script src='https://aframe.io/releases/1.0.4/aframe.min.js'></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script>
+        THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
+    </script>
+
+    <script>
+    AFRAME.registerComponent('rotation-reader', {
+      
+      init: function(){
+        var holderEl = document.querySelector('#holder');
+        let el = this.el;
+        //var rotae = this.el.getAttribute('rotation');
+        //console.log(rotae);
+        // put this in event listener???
+        
+        var z = [
+            {
+              position: 0,
+              velocity: 0,
+              acceleration: 0,
+              time: undefined
+            }
+          ];
+
+        var x = [
+          {
+            position: 0,
+            velocity: 0,
+            acceleration: 0,
+            time: undefined
+          }
+        ];
+        
+        window.addEventListener('devicemotion', function(event) {
+          //console.log(event.acceleration.x + ' m/s2');
+          
+          if(event.acceleration.x === null || event.acceleration.z === null) return;
+          var rotae = el.getAttribute('rotation');
+          console.log(rotae);
+          accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
+          holderEl.object3D.position.z =+ (z[0].position);
+          holderEl.object3D.position.x =+ (x[0].position);
+          //holderEl.object3D.position.z += (z[0].position);
+          //holderEl.object3D.position.x += (x[0].position);
+          
+       
+        });
+
+
+        //function accelerate(a, b, t) {
+        function accelerate(a, b, t) {
+
+          var newZ = Object.assign({}, z[0]);
+          var newX = Object.assign({}, x[0]);
+
+          if (Math.abs(a) > .05){
+          newZ.acceleration = a;  
+          }
+
+          else {
+          newZ.acceleration = 0;  
+          }
+
+          if (Math.abs(b) > .05){
+          newX.acceleration = b;  
+          }
+
+          else {
+          newX.acceleration = 0;  
+          }
+
+          //^^newZ.acceleration = Math.abs(a) > .1 ? a : 0; // noise filter
+          //newX.acceleration = Math.abs(b) > .1 ? b : 0; // noise filter
+
+          newZ.time = t;
+          newX.time = t;
+
+          newZ = eulerStepZ(z[0], newZ);
+          newX = eulerStepX(x[0], newX);
+
+          newZ.velocity *= 1; // friction
+          //newZ.velocity = Math.abs(newZ.velocity) < .01 ? 0 : newZ.velocity; // noise filter
+          newZ.position *= 1; // tend back to zero
+
+          newX.velocity *= 1; // friction
+          //newX.velocity = Math.abs(newX.velocity) < .01 ? 0 : newX.velocity; // noise filter
+          newX.position *= 1; // tend back to zero
+
+          z.unshift(newZ);
+          x.unshift(newX);
+
+        }
+
+        function eulerStepZ(state0, state1) {
+          var interval = (state1.time - state0.time) / 1000; // convert ms to s
+          if(interval) {
+            state1.position = state0.position + state0.velocity * interval;
+            state1.velocity = state0.velocity + state0.acceleration * interval;
+          }
+          return Object.assign({}, state1);
+        }
+
+        function eulerStepX(state0, state1) {
+          var interval = (state1.time - state0.time) / 1000; // convert ms to s
+          if(interval) {
+            state1.position = state0.position + state0.velocity * interval;
+            state1.velocity = state0.velocity + state0.acceleration * interval;
+          }
+          return Object.assign({}, state1);
+        }
+      
+      },
+
+    });
+
+    
+
+    </script>
+
+    <script>
+      AFRAME.registerComponent('shadow-material', {
+        init: function(){
+          console.log('shadow-material');
+          let el = this.el;
+          let self = this;
+          let mesh = el.getObject3D('mesh');
+          console.log(mesh);
+          if (!mesh){return;}
+          mesh.material = new THREE.ShadowMaterial();
+          mesh.material.opacity = 1.0;
+          
+        }
+      });
+    </script>
+
+    <script>
+      AFRAME.registerComponent('name', {
+        init: function () {
+          // Solution for Modifying Entities.
+          var today = new Date();
+          var h = today.getHours();
+          var shadowvalue = h-(24-h);
+          var posx;
+          var posz;
+
+          var sceneEl = document.querySelector('a-scene'); 
+          sceneEl.querySelector('#directionaltarget').setAttribute('position', {x: shadowvalue, y: -10, z: 0});
+          
+        }
+      });
+    </script>
+    <!-- style for the loader -->
+    <style>
+      .arjs-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .arjs-loader div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body style="margin : 0px; overflow: hidden;">
+
+    <a-scene name
+      vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      embedded
+      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+
+
+      <a-entity id="lighting" gps-entity-place="latitude: 45.412762; longitude: -75.689809">
+
+        <a-entity light="type: ambient; intensity: 0.8;"></a-entity>
+        <a-entity light="type: directional;
+                     castShadow: true;
+                     intensity: 2;
+                     shadowCameraVisible: false;
+                     shadowCameraLeft: -20;
+                     shadowCameraRight:20;
+                     shadowCameraTop:20;
+                     shadowCameraBottom:-20;
+                     target:#directionaltarget"
+                  position="0 15 0">
+              <a-entity id="directionaltarget"></a-entity>
+            
+        </a-entity>
+
+        <a-plane color="#CCC" height="40" width="40" rotation="-90 0 0" shadow="receive: true" shadow-material position="0 0 0"></a-plane>  
+        
+      </a-entity>
+
+
+      <a-entity id="temp-parent" gps-entity-place="latitude: 45.412762; longitude: -75.689809" rotation="0 -90 0" shadow="cast: true">
+      
+      
+        <a-entity id="groupmuseum" rotation="0 0 0" position="0 0 -1">
+            <a-entity id="bison2" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 30 0" scale="1 1 1" position="-3 0 0" animation-mixer/></a-entity>
+            <a-entity id="bison3" gltf-model="./assets/bison/AncientBison.gltf" rotation="0 -50 0" scale="1 1 1" position="3.5 0 -2" animation-mixer/></a-entity>
+            <a-entity id="saberanim" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; easing: linear; dur: 20000">
+                <a-entity id="saber" gltf-model="./assets/sabertooth/Sabertooth.gltf" position="8 0 0" scale="1 1 1" animation-mixer/></a-entity>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="groupmammoth" rotation="0 0 0" position="0 0 -1">
+            <a-entity id="mammoth2" gltf-model="./assets/cmammoth/ColumbianMammoth.gltf" rotation="0 0 0" scale="1 1 1" position="0 0 0"animation-mixer/></a-entity>
+            <a-entity id="mammoth3" gltf-model="./assets/pmammoth/ColumbianMammoth.gltf" rotation="0 310 0" scale="1 1 1" position="5 0 0"animation-mixer/></a-entity>
+            <a-entity id="mammoth4" gltf-model="./assets/pmammoth/ColumbianMammoth.gltf" rotation="0 50 0" scale="1 1 1" position="0 0 5"animation-mixer/></a-entity>
+        </a-entity>
+
+        <a-entity id="groupbirds" rotation="0 0 0" position="0 0 -1" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing:linear">
+            <a-entity id="bird1" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 0 0" scale="2 2 2" position="4 -1 0" animation-mixer/></a-entity>
+            <a-entity id="bird2" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 0 0" scale="2 2 2" position="6 -2 0"animation-mixer/></a-entity>
+            <a-entity id="bird3" gltf-model="./assets/wmeadowlark/WesternMeadowlark.gltf" rotation="0 180 0" scale="2 2 2" position="-4 -4 0" animation-mixer/></a-entity>
+        </a-entity>
+
+      </a-entity>
+
+      <a-entity id="welcome" gps-entity-place="latitude: 45.412762; longitude: -75.689809" rotation="0 90 0" >
+        <a-text
+        value="Welcome to Planet Ice."
+        look-at="[gps-camera]"
+        scale="2 2 2"
+        text.align="center"
+        position="-2 5 -1"
+        ></a-text>
+
+        <a-text
+        value="Welcome to Planet Ice."
+        look-at="[gps-camera]"
+        scale="2 2 2"
+        rotation="0 180 0"
+        text.align="center"
+        position="2 5 -1"
+        ></a-text>
+
+      </a-entity>
+
+      <!--
+      <a-camera near="0.1"
+      far="500"
+      arjs-look-controls='smoothingFactor: 0.0;'
+      position="0 1.6 0"
+      gps-camera="gpsMinDistance: 0; simulateLatitude: 45.412762; simulateLongitude: -75.689809; gpsTimeInterval: 20;"
+      rotation-reader
+       </a-camera>
+      >
+      -->
+
+      
+      <a-entity id="holder">
+        <a-camera 
+        near="1"
+        far="500"
+        position="0 1.6 0"
+        gps-camera="gpsMinDistance:20; simulateLatitude: 45.412762; simulateLongitude: -75.689809;"
+        rotation-reader>  
+        </a-camera>
+      </a-entity>
+    
+      
+      
+    </a-scene>
+
+    
+  </body>
+</html>
