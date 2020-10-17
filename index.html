@@ -45,13 +45,12 @@
           
           if(event.acceleration.x === null || event.acceleration.z === null) return;
           var rotae = el.getAttribute('rotation');
-          console.log(rotae);
+          var yangle = rotae.y * Math.PI / 180;
+          //console.log(rotae.y);
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
-          holderEl.object3D.position.z =+ (z[0].position);
-          holderEl.object3D.position.x =+ (x[0].position);
-          //holderEl.object3D.position.z += (z[0].position);
-          //holderEl.object3D.position.x += (x[0].position);
-          
+          holderEl.object3D.position.z =+ (z[0].position * Math.cos(yangle));
+          holderEl.object3D.position.x =+ (x[0].position * Math.sin(yangle));
+          console.log(holderEl.object3D.position.x + ' is x ')
        
         });
 
