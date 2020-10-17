@@ -47,7 +47,7 @@
           var rotae = el.getAttribute('rotation');
           var yangle = rotae.y * Math.PI / 180;
           console.log(yangle);
-          accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
+          accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp, yangle);
           holderEl.object3D.position.z =+ (z[0].position);
           holderEl.object3D.position.x =+ (x[0].position);
           console.log(holderEl.object3D.position.x + ' is x ')
@@ -56,7 +56,7 @@
 
 
         //function accelerate(a, b, t) {
-        function accelerate(a, b, t) {
+        function accelerate(a, b, t, y) {
 
           var newZ = Object.assign({}, z[0]);
           var newX = Object.assign({}, x[0]);
@@ -83,8 +83,8 @@
           newZ.time = t;
           newX.time = t;
 
-          newZ = eulerStepZ(z[0], newZ);
-          newX = eulerStepX(x[0], newX);
+          newZ = eulerStepZ(z[0], newZ, y);
+          newX = eulerStepX(x[0], newX, y);
 
           newZ.velocity *= 0.9; // friction
           //newZ.velocity = Math.abs(newZ.velocity) < .01 ? 0 : newZ.velocity; // noise filter
@@ -103,7 +103,7 @@
           var interval = (state1.time - state0.time) / 1000; // convert ms to s
           if(interval) {
             state1.position = state0.position + state0.velocity * interval;
-            state1.velocity = state0.velocity * Math.cos(yangle) + state0.acceleration * interval;
+            state1.velocity = state0.velocity * Math.cos(y) + state0.acceleration * interval;
           }
           return Object.assign({}, state1);
         }
@@ -112,7 +112,7 @@
           var interval = (state1.time - state0.time) / 1000; // convert ms to s
           if(interval) {
             state1.position = state0.position + state0.velocity * interval;
-            state1.velocity = state0.velocity * Math.sin(yangle) + state0.acceleration * interval;
+            state1.velocity = state0.velocity * Math.sin(y) + state0.acceleration * interval;
           }
           return Object.assign({}, state1);
         }
