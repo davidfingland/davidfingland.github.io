@@ -20,6 +20,9 @@
         var test1;
         var test2;
         var test3;
+        //var rotae = this.el.getAttribute('rotation');
+        //console.log(rotae);
+        // put this in event listener???
         
         var z = [
             {
@@ -43,7 +46,8 @@
           //console.log(event.acceleration.x + ' m/s2');
           
           if(event.acceleration.x === null || event.acceleration.z === null) return;
-          //use getrotation in here???
+          var rotae = this.el.getAttribute('rotation');
+          console.log(rotae);
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
           console.log(test1 + 'test1' + test2 + 'test2' + test3 +'test3');
           holderEl.object3D.position.z =+ (z[0].position);
