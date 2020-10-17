@@ -60,6 +60,7 @@
 
           var newZ = Object.assign({}, z[0]);
           var newX = Object.assign({}, x[0]);
+          var yangle = y;
 
           if (Math.abs(a) > .05){
           newZ.acceleration = a;  
@@ -83,8 +84,8 @@
           newZ.time = t;
           newX.time = t;
 
-          newZ = eulerStepZ(z[0], newZ, y);
-          newX = eulerStepX(x[0], newX, y);
+          newZ = eulerStepZ(z[0], newZ, yangle);
+          newX = eulerStepX(x[0], newX, yangle);
 
           newZ.velocity *= 0.9; // friction
           //newZ.velocity = Math.abs(newZ.velocity) < .01 ? 0 : newZ.velocity; // noise filter
@@ -103,7 +104,7 @@
           var interval = (state1.time - state0.time) / 1000; // convert ms to s
           if(interval) {
             state1.position = state0.position + state0.velocity * interval;
-            state1.velocity = state0.velocity * Math.cos(y) + state0.acceleration * interval;
+            state1.velocity = state0.velocity * Math.cos(yangle) + state0.acceleration * interval;
           }
           return Object.assign({}, state1);
         }
@@ -112,7 +113,7 @@
           var interval = (state1.time - state0.time) / 1000; // convert ms to s
           if(interval) {
             state1.position = state0.position + state0.velocity * interval;
-            state1.velocity = state0.velocity * Math.sin(y) + state0.acceleration * interval;
+            state1.velocity = state0.velocity * Math.sin(yangle) + state0.acceleration * interval;
           }
           return Object.assign({}, state1);
         }
