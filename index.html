@@ -100,7 +100,7 @@
 
         }
 
-        function eulerStepZ(state0, state1) {
+        function eulerStepZ(state0, state1, yangle) {
           var interval = (state1.time - state0.time) / 1000; // convert ms to s
           if(interval) {
             state1.position = state0.position + state0.velocity * interval;
@@ -109,7 +109,7 @@
           return Object.assign({}, state1);
         }
 
-        function eulerStepX(state0, state1) {
+        function eulerStepX(state0, state1, yangle) {
           var interval = (state1.time - state0.time) / 1000; // convert ms to s
           if(interval) {
             state1.position = state0.position + state0.velocity * interval;
