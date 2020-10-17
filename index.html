@@ -17,9 +17,6 @@
       
       init: function(){
         var holderEl = document.querySelector('#holder');
-        var test1;
-        var test2;
-        var test3;
         let el = this.el;
         //var rotae = this.el.getAttribute('rotation');
         //console.log(rotae);
@@ -50,15 +47,12 @@
           var rotae = el.getAttribute('rotation');
           console.log(rotae);
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp);
-          console.log(test1 + 'test1' + test2 + 'test2' + test3 +'test3');
           holderEl.object3D.position.z =+ (z[0].position);
           holderEl.object3D.position.x =+ (x[0].position);
-          //holderEl.object3D.position.z += (z[0].position/10);
-          //holderEl.object3D.position.x += (x[0].position/10);
-          //holderEl.object3D.position.z = holder.object3D.position.z + event.acceleration.z;
-
-          //console.log('x is ' + holderEl.object3D.position.x + ' while accel is ' + event.acceleration.x);
-           
+          //holderEl.object3D.position.z += (z[0].position);
+          //holderEl.object3D.position.x += (x[0].position);
+          
+       
         });
 
 
@@ -125,16 +119,6 @@
         }
       
       },
-
-      tick: function () {
-      //throwing rotation in euler
-        //console.log(this.el.object3D.rotation.x);
-        //how to get this in update function???
-        var test1 = this.el.object3D.rotation.x;
-        var test2 = this.el.object3D.rotation.y;
-        var test3 = this.el.object3D.rotation.z;
-        //console.log(test1 + 'test1' + test2 + 'test2' + test3 +'test3');
-      }
 
     });
 
