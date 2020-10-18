@@ -47,7 +47,7 @@
           var rotae = el.getAttribute('rotation');
           var yangle = rotae.y * Math.PI / 180;
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp, yangle);
-          holderEl.object3D.position.z =+ (z[0].position * 10);
+          holderEl.object3D.position.z =+ (z[0].position * 100);
           holderEl.object3D.position.x =+ (x[0].position * 10);
           console.log(holderEl.object3D.position.z + ' is z ')
        
