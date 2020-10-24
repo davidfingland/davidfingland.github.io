@@ -74,7 +74,7 @@
           var newX = Object.assign({}, x[0]);
           var yangle = y;
 
-          if (Math.abs(a) > .8){
+          if (Math.abs(a) > 0.10){
           newZ.acceleration = a;  
           }
 
@@ -82,7 +82,7 @@
           newZ.acceleration = 0;  
           }
 
-          if (Math.abs(b) > .8){
+          if (Math.abs(b) > 0.10){
           newX.acceleration = b;  
           }
 
