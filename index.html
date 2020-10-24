@@ -44,25 +44,25 @@
 
           // --- For backup, if accelerating, turn on GPS adjusting ---
           // Note: This should really go in the movment function to ensure only updates while moving
-          //if (Math.abs(event.acceleration.x) >= 1.3 || Math.abs(event.acceleration.z) >= 1.3 ){
-            //console.log(' acceleration ');
-            //cameraEl.setAttribute('gpsMinDistance', 0);
-            //console.log(cameraEl.getAttribute('gpsMinDistance') + ' gps min');
-          //}
-          //else {
-            //cameraEl.setAttribute('gpsMinDistance', 30);
-            //console.log(cameraEl.getAttribute('gpsMinDistance') + ' gps min');
-          //}
+          if (Math.abs(event.acceleration.x) >= 1 || Math.abs(event.acceleration.z) >= 1 ){
+            console.log(' acceleration ');
+            cameraEl.setAttribute('gpsMinDistance', 0);
+            console.log(cameraEl.getAttribute('gpsMinDistance') + ' gps min');
+          }
+          else {
+            cameraEl.setAttribute('gpsMinDistance', 30);
+            console.log(cameraEl.getAttribute('gpsMinDistance') + ' gps min');
+          }
 
 
           // --- Using direction + acceleration to move camera holder. This is supposed to solve the shaking from GPS reload. 
-          if(event.acceleration.x === null || event.acceleration.z === null) return;
-          var rotae = el.getAttribute('rotation');
-          var yangle = rotae.y;
-          accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp, yangle);
-          holderEl.object3D.position.z =+ (z[0].position);
-          holderEl.object3D.position.x =+ (x[0].position * -1);
-          console.log(holderEl.object3D.position.x + ' is x ' + holderEl.object3D.position.z + ' is z ' + yangle + ' is angle ' ); 
+          //if(event.acceleration.x === null || event.acceleration.z === null) return;
+          //var rotae = el.getAttribute('rotation');
+          //var yangle = rotae.y;
+          //accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp, yangle);
+          //holderEl.object3D.position.z =+ (z[0].position);
+          //holderEl.object3D.position.x =+ (x[0].position);
+          //console.log(holderEl.object3D.position.x + ' is x ' + holderEl.object3D.position.z + ' is z ' + yangle + ' is angle ' ); 
        
         });
 
