@@ -41,16 +41,16 @@
         ];
         
         window.addEventListener('devicemotion', function(event) {
-          
+
           // For easier, if moving, turn on GPS adjusting
           if (Math.abs(event.acceleration.x) >= 1.1 || Math.abs(event.acceleration.z) >= 1.1 ){
-            console.log(' acceleration ');
-            //cameraEl.setAttribute('gpsMinDistance', 0);
+            //console.log(' acceleration ');
+            cameraEl.setAttribute('gpsMinDistance', 0);
           }
-          //else {
-            //cameraEl.setAttribute('gpsMinDistance', 20);
-            //console.log(' cameraEl.gpsMinDistance ');
-          //}
+          else {
+            cameraEl.setAttribute('gpsMinDistance', 20);
+            console.log('cameraEl.gpsMinDistance');
+          }
 
 
           // For harder, using direction + acceleration to move camera holder. This is supposed to cover the shaking from GPS reload. 
