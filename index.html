@@ -18,6 +18,8 @@
       init: function(){
         var holderEl = document.querySelector('#holder');
         var cameraEl = document.querySelector('a-camera');
+        
+        // Passing this object into a variable for the event lister
         let el = this.el;
         
         var z = [
@@ -39,9 +41,8 @@
         ];
         
         window.addEventListener('devicemotion', function(event) {
-
-
-          // For 
+          
+          // For easier, if moving, turn on GPS adjusting
           if (Math.abs(event.acceleration.x) >= 1.1 || Math.abs(event.acceleration.z) >= 1.1 ){
             console.log(' acceleration ');
             //cameraEl.setAttribute('gpsMinDistance', 0);
@@ -51,6 +52,8 @@
             //console.log(' cameraEl.gpsMinDistance ');
           //}
 
+
+          // For harder, using direction + acceleration to move camera holder. This is supposed to cover the shaking from GPS reload. 
           if(event.acceleration.x === null || event.acceleration.z === null) return;
           var rotae = el.getAttribute('rotation');
           var yangle = rotae.y * Math.PI / 180;
