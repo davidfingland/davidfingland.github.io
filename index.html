@@ -61,7 +61,7 @@
           var yangle = rotae.y;
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp, yangle);
           holderEl.object3D.position.z =+ (z[0].position);
-          holderEl.object3D.position.x =+ (x[0].position);
+          holderEl.object3D.position.x =+ (x[0].position * -1);
           console.log(holderEl.object3D.position.x + ' is x ' + holderEl.object3D.position.z + ' is z ' + yangle + ' is angle ' ); 
        
         });
