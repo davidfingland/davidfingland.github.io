@@ -60,8 +60,8 @@
           var rotae = el.getAttribute('rotation');
           var yangle = rotae.y;
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp, yangle);
-          holderEl.object3D.position.z =+ (z[0].position * 10);
-          holderEl.object3D.position.x =+ (x[0].position * 10);
+          holderEl.object3D.position.z =+ (z[0].position);
+          holderEl.object3D.position.x =+ (x[0].position);
           console.log(holderEl.object3D.position.x + ' is x ' + holderEl.object3D.position.z + ' is z ' + yangle + ' is angle ' ); 
        
         });
@@ -116,7 +116,7 @@
           var interval = (state1.time - state0.time) / 1000; // convert ms to s
           if(interval) {
             state1.position = state0.position + state0.velocity * interval;
-            state1.velocity = state0.velocity + state0.acceleration * Math.cos(yangle) * interval;
+            state1.velocity = state0.velocity + state0.acceleration * Math.sin(yangle) * interval;
           }
           return Object.assign({}, state1);
         }
@@ -125,7 +125,7 @@
           var interval = (state1.time - state0.time) / 1000; // convert ms to s
           if(interval) {
             state1.position = state0.position + state0.velocity * interval;
-            state1.velocity = state0.velocity + state0.acceleration * Math.sin(yangle) * interval;
+            state1.velocity = state0.velocity + state0.acceleration * Math.cos(yangle) * interval;
           }
           return Object.assign({}, state1);
         }
