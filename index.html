@@ -46,11 +46,11 @@
           // Note: This should really go in the movment function to ensure only updates while moving
           if (Math.abs(event.acceleration.x) >= 1 || Math.abs(event.acceleration.z) >= 1 ){
             console.log(' acceleration ');
-            cameraEl.setAttribute('gpsMinDistance', 0);
+            cameraEl.setAttribute('gpsMinDistance', 30);
             console.log(cameraEl.getAttribute('gpsMinDistance') + ' gps min');
           }
           else {
-            cameraEl.setAttribute('gpsMinDistance', 30);
+            cameraEl.setAttribute('gpsMinDistance', 0);
             console.log(cameraEl.getAttribute('gpsMinDistance') + ' gps min');
           }
 
