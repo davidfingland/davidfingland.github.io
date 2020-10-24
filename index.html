@@ -99,13 +99,13 @@
           newZ = eulerStepZ(z[0], newZ, yangle);
           newX = eulerStepX(x[0], newX, yangle);
 
-          newZ.velocity *= 0.9; // friction
+          newZ.velocity *= 1; // friction was 0.9
           //newZ.velocity = Math.abs(newZ.velocity) < .01 ? 0 : newZ.velocity; // noise filter
-          newZ.position *= 0.999; // tend back to zero
+          newZ.position *= 1; // tend back to zero was 0.999
 
-          newX.velocity *= 0.9; // friction
+          newX.velocity *= 1; // friction was 0.9
           //newX.velocity = Math.abs(newX.velocity) < .01 ? 0 : newX.velocity; // noise filter
-          newX.position *= 0.999; // tend back to zero
+          newX.position *= 1; // tend back to zero was 0.999
 
           z.unshift(newZ);
           x.unshift(newX);
@@ -115,8 +115,8 @@
         function eulerStepZ(state0, state1, yangle) {
           var interval = (state1.time - state0.time) / 1000; // convert ms to s
           if(interval) {
-            state1.position = state0.position + state0.velocity * Math.cos(yangle) * interval;
-            state1.velocity = state0.velocity + state0.acceleration * interval;
+            state1.position = state0.position + state0.velocity * interval;
+            state1.velocity = state0.velocity + state0.acceleration * Math.cos(yangle) * interval;
           }
           return Object.assign({}, state1);
         }
@@ -124,8 +124,8 @@
         function eulerStepX(state0, state1, yangle) {
           var interval = (state1.time - state0.time) / 1000; // convert ms to s
           if(interval) {
-            state1.position = state0.position + state0.velocity * Math.sin(yangle) * interval;
-            state1.velocity = state0.velocity + state0.acceleration * interval;
+            state1.position = state0.position + state0.velocity * interval;
+            state1.velocity = state0.velocity + state0.acceleration * Math.sin(yangle) * interval;
           }
           return Object.assign({}, state1);
         }
