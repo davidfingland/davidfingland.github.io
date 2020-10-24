@@ -19,9 +19,9 @@
         var holderEl = document.querySelector('#holder');
         var cameraEl = document.querySelector('a-camera');
         
-        // Passing this object into a variable for the event lister
+        // Passing this object into a variable for the accel event lister
         let el = this.el;
-        
+ 
         var z = [
             {
               position: 0,
@@ -65,11 +65,10 @@
           //console.log(holderEl.object3D.position.x + ' is x ' + holderEl.object3D.position.z + ' is z ' + yangle + ' is angle ' ); 
        
         });
-
-        window.addEventListener('gps-camera-update-positon', function (event) {
+        
+        this.el.SceneEl.addEventListener('gps-camera-update-positon', function(event) {
           console.log('reloaded');
         });
-
 
         //function accelerate(a, b, t) {
         function accelerate(a, b, t, y) {
