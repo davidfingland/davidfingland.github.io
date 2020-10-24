@@ -17,10 +17,8 @@
       
       init: function(){
         var holderEl = document.querySelector('#holder');
+        var cameraEl = document.querySelector('a-camera');
         let el = this.el;
-        //var rotae = this.el.getAttribute('rotation');
-        //console.log(rotae);
-        // put this in event listener???
         
         var z = [
             {
@@ -41,15 +39,26 @@
         ];
         
         window.addEventListener('devicemotion', function(event) {
-          //console.log(event.acceleration.x + ' m/s2');
-          
+
+
+          // For 
+          if (Math.abs(event.acceleration.x) >= 1.1 || Math.abs(event.acceleration.z) >= 1.1 ){
+            console.log(' acceleration ');
+            //cameraEl.setAttribute('gpsMinDistance', 0);
+          }
+          //else {
+            //cameraEl.setAttribute('gpsMinDistance', 20);
+            //console.log(' cameraEl.gpsMinDistance ');
+          //}
+
           if(event.acceleration.x === null || event.acceleration.z === null) return;
           var rotae = el.getAttribute('rotation');
           var yangle = rotae.y * Math.PI / 180;
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp, yangle);
           holderEl.object3D.position.z =+ (z[0].position * 10);
           holderEl.object3D.position.x =+ (x[0].position * 10);
-          console.log(holderEl.object3D.position.x + ' is x ');
+          //console.log(holderEl.object3D.position.x + ' is x ');
+          
        
         });
 
