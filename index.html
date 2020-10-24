@@ -58,7 +58,7 @@
           // --- Using direction + acceleration to move camera holder. This is supposed to solve the shaking from GPS reload. 
           if(event.acceleration.x === null || event.acceleration.z === null) return;
           var rotae = el.getAttribute('rotation');
-          var yangle = (rotae.y-90) * Math.PI / 180;
+          var yangle = rotae.y;
           accelerate(event.acceleration.z, event.acceleration.x, event.timeStamp, yangle);
           holderEl.object3D.position.z =+ (z[0].position * 10);
           holderEl.object3D.position.x =+ (x[0].position * 10);
@@ -115,8 +115,8 @@
         function eulerStepZ(state0, state1, yangle) {
           var interval = (state1.time - state0.time) / 1000; // convert ms to s
           if(interval) {
-            state1.position = state0.position + state0.velocity * interval;
-            state1.velocity = state0.velocity * Math.cos(yangle) + state0.acceleration * interval;
+            state1.position = state0.position + state0.velocity * Math.cos(yangle) * interval;
+            state1.velocity = state0.velocity + state0.acceleration * interval;
           }
           return Object.assign({}, state1);
         }
@@ -124,8 +124,8 @@
         function eulerStepX(state0, state1, yangle) {
           var interval = (state1.time - state0.time) / 1000; // convert ms to s
           if(interval) {
-            state1.position = state0.position + state0.velocity * interval;
-            state1.velocity = state0.velocity * Math.sin(yangle) + state0.acceleration * interval;
+            state1.position = state0.position + state0.velocity * Math.sin(yangle) * interval;
+            state1.velocity = state0.velocity + state0.acceleration * interval;
           }
           return Object.assign({}, state1);
         }
